@@ -105,6 +105,8 @@ register_deactivation_hook( __FILE__, 'deactivate_tm_newsletter' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-tm-newsletter.php';
 
+require plugin_dir_path( __FILE__ ) . 'functions/helper.php';
+
 /**
  * Begins execution of the plugin.
  *
@@ -128,10 +130,41 @@ function tnl_init() {
 	TNL_CPT_News::get_instance();
 	TNL_CPT_Newsletter::get_instance();
 	TNL_Terms_Term::get_instance()->create();
+
+	if ( !is_admin() ) {
+		test();
+	}
+
 }
 add_action( 'init', 'tnl_init' );
 
-function my_acf_render_field( $field ) {
-	print_r($field);
+function tnl_wp() {
+
 }
-//add_action('acf/render_field/key=field_5e71e51dd336c', 'my_acf_render_field');
+add_action('wp_admin', 'tnl_wp');
+function test() {
+	$post_id = 53;
+	$args = [
+		'category' => ''
+	];
+
+	$featured = TNL_NewsLetter_Featured::get_instance()->getNewsPosts([
+			'post_id' => $post_id
+	]);
+
+	tnl_dd($featured);
+
+	$settings = new TNL_NewsLetter_Settings;
+	$settings->setPostId( $post_id );
+	tnl_dd($settings->getIssueDate());
+
+	if ( $featured ) {
+		$query = [
+			'post__in' => $featured
+		];
+		$posts = TNL_GetPosts::get_instance()->query($query);
+		tnl_dd($posts);
+	}
+
+	exit();
+}

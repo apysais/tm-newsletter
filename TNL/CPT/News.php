@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* Convert parse string to Input text.
+* Custom post type, News.
 **/
 class TNL_CPT_News
 {
@@ -44,6 +44,9 @@ class TNL_CPT_News
     $this->register();
   }
 
+	/**
+	 * Register the custom post type.
+	 */
   public function register() {
 
       /**

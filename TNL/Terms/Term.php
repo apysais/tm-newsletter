@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* Convert parse string to Input text.
+* News taxonomy terms.
 **/
 class TNL_Terms_Term
 {
