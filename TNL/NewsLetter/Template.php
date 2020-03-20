@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* Get news posts.
+* Newsletter Templates.
 **/
-class TNL_GetPosts
+class TNL_NewsLetter_Template
 {
   /**
 	 * instance of this class
@@ -41,39 +41,25 @@ class TNL_GetPosts
 	}
 
   public function __construct() {
-
+		add_filter('single_template', [$this, 'init']);
   }
 
-  /**
-   * Get news posts by category
-   * @see https://developer.wordpress.org/reference/classes/wp_query/
-   * @param array $args {
-   *    an array of arguments pass to WP_Query, check WP_Query list of arguments
-   * }
-   * @return array|bool
-   */
-  public function query( $args = [] ) {
+	/**
+	 * Check and use template in the plugin.
+	 */
+  public function init() {
 
-    $defaults = [
-      'post_type' => 'news',
-      'posts_per_page' => -1,
-      'post__in' => []
-    ];
+    if ( is_singular( 'newsletter' ) ) {
+			$template = locate_template( 'single-newsletter.php' );
 
-    $args = wp_parse_args( $args, $defaults );
+			if ( ! $template ) {
+				return TNL_View::get_instance()->public_part_partials('single-newsletter.php');
+			}
 
-    $query_args = $args;
+			return $template;
 
-    $query = new WP_Query( $query_args );
-
-    if ( $query->have_posts() ) {
-      return $query->posts;
     }
 
-    wp_reset_postdata();
-
-    return false;
   }
-
 
 }//

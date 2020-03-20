@@ -69,6 +69,25 @@ class TNL_NewsLetter_WhatsOn
     return false;
   }
 
+	/**
+	 * Show all posts.
+	 * @param array $args {
+	 *		list of option and settings
+ 	 * }
+	 * @return html
+	 */
+	public function showAll( $args = [] ) {
+
+		$defaults = array (
+      'show_title' => true,
+			'thumbnail_size' => 'medium',
+    );
+
+    // Parse incoming $args into an array and merge it with $defaults
+    $args = wp_parse_args( $args, $defaults );
+		TNL_View::get_instance()->public_partials('loop-item.php',  $args);
+	}
+
 	public function getPosts() {
 
 	}

@@ -122,7 +122,11 @@ function run_tm_newsletter() {
 	$plugin = new Tm_Newsletter();
 	$plugin->run();
 
+	TNL_ShortCode_NewsLetterLists::get_instance();
+	TNL_ShortCode_NewsLists::get_instance();
+	TNL_ShortCode_NewsLetterSingle::get_instance();
 	//TNL_NewsLetter_MetaBox::get_instance();
+
 }
 //run_tm_newsletter();
 add_action('plugins_loaded', 'run_tm_newsletter');
@@ -131,34 +135,6 @@ function tnl_init() {
 	TNL_CPT_News::get_instance();
 	TNL_CPT_Newsletter::get_instance();
 	TNL_Terms_Term::get_instance()->create();
-	TNL_ShortCode_NewsLetterSingle::get_instance();
-	if ( !is_admin() ) {
-		//test();
-	}
-
+	TNL_NewsLetter_Template::get_instance()->init();
 }
 add_action( 'init', 'tnl_init' );
-
-function test() {
-	$post_id = 53;
-	$args = [
-		'category' => ''
-	];
-
-	$settings = new TNL_NewsLetter_Settings;
-	$settings->setPostId( $post_id );
-	tnl_dd($settings->getIssueDate());
-
-	$query_args = [
-		'post_id' => $post_id
-	];
-
-	// $featured = TNL_NewsLetter_Query::get_instance()->getFeatured( $query_args );
-	// tnl_dd($featured);
-	//
-	// $standard = TNL_NewsLetter_Query::get_instance()->getStandard( $query_args );
-	// tnl_dd($standard);
-	//$whats_on = TNL_NewsLetter_Query::get_instance()->getWhatsOn( $query_args );
-	//tnl_dd($whats_on);
-	exit();
-}

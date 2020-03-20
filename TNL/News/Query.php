@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* Get news posts.
+* Build newsletter
 **/
-class TNL_GetPosts
+class TNL_News_Query
 {
   /**
 	 * instance of this class
@@ -44,36 +44,23 @@ class TNL_GetPosts
 
   }
 
-  /**
-   * Get news posts by category
-   * @see https://developer.wordpress.org/reference/classes/wp_query/
-   * @param array $args {
-   *    an array of arguments pass to WP_Query, check WP_Query list of arguments
-   * }
-   * @return array|bool
-   */
-  public function query( $args = [] ) {
+	/**
+	 * Get all newsletters.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	public function getAllNews( $args = [] ) {
+		$defaults = [
+			'posts_per_page' 	=> '-1',
+			'post_type' 			=> 'news',
+		];
 
-    $defaults = [
-      'post_type' => 'news',
-      'posts_per_page' => -1,
-      'post__in' => []
-    ];
+		$args = wp_parse_args( $args, $defaults );
 
-    $args = wp_parse_args( $args, $defaults );
+		$get = get_posts( $args );
 
-    $query_args = $args;
-
-    $query = new WP_Query( $query_args );
-
-    if ( $query->have_posts() ) {
-      return $query->posts;
-    }
-
-    wp_reset_postdata();
-
-    return false;
-  }
-
+		return $get;
+	}
 
 }//

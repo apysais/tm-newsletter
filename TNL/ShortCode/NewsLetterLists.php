@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * NewsLetter Shortcode.
  **/
-class TNL_ShortCode_NewsLetter
+class TNL_ShortCode_NewsLetterLists
 {
   /**
 	 * instance of this class
@@ -43,18 +43,24 @@ class TNL_ShortCode_NewsLetter
 	}
 
   public function __construct() {
-    add_shortcode( 'tm_newsletter', [ $this, 'init' ] );
+    add_shortcode( 'tm_newsletter_lists', [ $this, 'init' ] );
   }
 
   public function init( $atts ) {
 
     $atts = shortcode_atts( [
 
-    ], $atts, 'tm_newsletter' );
+    ], $atts, 'tm_newsletter_lists' );
 
     $data = [];
 
-    TNL_View::get_instance()->public_partials('shortcodes/newsletter/index.php', $data);
+		$get = TNL_NewsLetter_Query::get_instance()->getAllNewsLetters();
+
+		$data = [
+			'posts' => $get
+		];
+
+    TNL_View::get_instance()->public_partials('newsletter-lists.php', $data);
 
   }
 

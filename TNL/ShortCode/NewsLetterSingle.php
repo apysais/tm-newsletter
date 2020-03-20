@@ -77,7 +77,7 @@ class TNL_ShortCode_NewsLetterSingle
 			'instagram' => $instagram,
 			'project_updates' => $project_updates,
 		];
-
+		
     TNL_View::get_instance()->public_partials('shortcodes/newsletter/single.php', $data);
 
   }

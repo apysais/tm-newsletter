@@ -45,6 +45,25 @@ class TNL_NewsLetter_Query
   }
 
 	/**
+	 * Get all newsletters.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	public function getAllNewsLetters( $args = [] ) {
+		$defaults = [
+			'posts_per_page' 	=> '-1',
+			'post_type' 			=> 'newsletter',
+		];
+
+		$args = wp_parse_args( $args, $defaults );
+
+		$get = get_posts( $args );
+
+		return $get;
+	}
+
+	/**
 	 * Get the featured posts.
 	 * @param array $args {
 	 *		@type int $post_id the post id

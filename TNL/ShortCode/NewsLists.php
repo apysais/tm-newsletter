@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* Get news posts.
-**/
-class TNL_GetPosts
+ * News lists Shortcode.
+ **/
+class TNL_ShortCode_NewsLists
 {
   /**
 	 * instance of this class
@@ -15,6 +15,8 @@ class TNL_GetPosts
 	 * @var	null
 	 * */
 	protected static $instance = null;
+
+  protected $post_id = null;
 
 	/**
 	 * Return an instance of this class.
@@ -41,39 +43,25 @@ class TNL_GetPosts
 	}
 
   public function __construct() {
-
+    add_shortcode( 'tm_news_lists', [ $this, 'init' ] );
   }
 
-  /**
-   * Get news posts by category
-   * @see https://developer.wordpress.org/reference/classes/wp_query/
-   * @param array $args {
-   *    an array of arguments pass to WP_Query, check WP_Query list of arguments
-   * }
-   * @return array|bool
-   */
-  public function query( $args = [] ) {
+  public function init( $atts ) {
 
-    $defaults = [
-      'post_type' => 'news',
-      'posts_per_page' => -1,
-      'post__in' => []
-    ];
+    $atts = shortcode_atts( [
 
-    $args = wp_parse_args( $args, $defaults );
+    ], $atts, 'tm_news_lists' );
 
-    $query_args = $args;
+    $data = [];
 
-    $query = new WP_Query( $query_args );
+		$get = TNL_News_Query::get_instance()->getAllNews();
 
-    if ( $query->have_posts() ) {
-      return $query->posts;
-    }
+		$data = [
+			'posts' => $get
+		];
 
-    wp_reset_postdata();
+    TNL_View::get_instance()->public_partials('news-lists.php', $data);
 
-    return false;
   }
-
 
 }//
