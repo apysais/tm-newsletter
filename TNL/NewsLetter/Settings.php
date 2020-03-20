@@ -85,5 +85,29 @@ class TNL_NewsLetter_Settings
    return $get;
   }
 
+	/**
+	 * Get the newsletter meta data
+	 */
+	public function getMetaData( $post_id ) {
+		$data = false;
+
+		$args = [
+			'include' 	=> [$post_id],
+			'post_type' => 'newsletter',
+		];
+
+		$get = get_posts( $args );
+
+		if ( $get ) {
+			$meta[] = get_field( 'settings', $post_id);
+			$data = [
+				'post' => $get[0],
+				'meta' => $meta
+			];
+		}
+
+		return $data;
+	}
+
 
 }//

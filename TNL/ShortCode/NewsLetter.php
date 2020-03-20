@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
- * Get the Events category by date range.
- */
-class TNL_NewsLetter_WhatsOn
+ * NewsLetter Shortcode.
+ **/
+class TNL_ShortCode_NewsLetter
 {
   /**
 	 * instance of this class
@@ -15,6 +15,8 @@ class TNL_NewsLetter_WhatsOn
 	 * @var	null
 	 * */
 	protected static $instance = null;
+
+  protected $post_id = null;
 
 	/**
 	 * Return an instance of this class.
@@ -41,37 +43,19 @@ class TNL_NewsLetter_WhatsOn
 	}
 
   public function __construct() {
-
+    add_shortcode( 'tm_newsletter', [ $this, 'init' ] );
   }
 
-  /**
-   * Get event posts.
-   *
-   * @param array $args  {
-   *  array of arguments
-   *  @type int $post_id the post id
-   * }
-   * @return array|bool
-   **/
-  public function getNewsPosts( $args = []) {
-    $post_id = 0;
-    if ( isset( $args['post_id'] ) ) {
-      $post_id = $args['post_id'];
-    }
+  public function init( $atts ) {
 
-    $fields =  TNL_ACF_Fields::get_instance()->getFields( 'whats_on', $post_id );
+    $atts = shortcode_atts( [
 
-    if ( $fields ) {
-			//$events = TNL_EO_Events::get_instance()->query( $fields );
-      return $fields;
-    }
+    ], $atts, 'tm_newsletter' );
 
-    return false;
+    $data = [];
+
+    TNL_View::get_instance()->public_partials('shortcodes/newsletter/index.php', $data);
+
   }
-
-	public function getPosts() {
-
-	}
-
 
 }//

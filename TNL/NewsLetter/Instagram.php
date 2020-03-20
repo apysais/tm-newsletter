@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
- * Get the Events category by date range.
+ * Get the Instagram Category Posts.
  */
-class TNL_NewsLetter_WhatsOn
+class TNL_NewsLetter_Instagram
 {
   /**
 	 * instance of this class
@@ -45,7 +45,7 @@ class TNL_NewsLetter_WhatsOn
   }
 
   /**
-   * Get event posts.
+   * Get news posts.
    *
    * @param array $args  {
    *  array of arguments
@@ -59,19 +59,14 @@ class TNL_NewsLetter_WhatsOn
       $post_id = $args['post_id'];
     }
 
-    $fields =  TNL_ACF_Fields::get_instance()->getFields( 'whats_on', $post_id );
+    $news_posts =  TNL_ACF_Fields::get_instance()->getFields( 'instagram', $post_id );
 
-    if ( $fields ) {
-			//$events = TNL_EO_Events::get_instance()->query( $fields );
-      return $fields;
+    if ( $news_posts ) {
+      return $news_posts['news_post'];
     }
 
     return false;
   }
-
-	public function getPosts() {
-
-	}
 
 
 }//

@@ -73,7 +73,7 @@ class TNL_CPT_News
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => null,
-				'show_in_rest' => true,
+				'show_in_rest' 			 => false,
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes', 'excerpt', 'comments' ),
     	);
 
@@ -96,7 +96,7 @@ class TNL_CPT_News
 
       $args_news_tax = array(
         'hierarchical'      => true,
-				'show_in_rest' 			=> true,
+				'show_in_rest' 			=> false,
         'labels'            => $labels_news_tax,
         'show_ui'           => true,
         'show_admin_column' => true,

@@ -72,7 +72,7 @@ class Tm_Newsletter_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_style( 'bootstrap4-iso', TM_NEWS_PLUGIN_URL . 'assets/bootstrap-iso/bootstrap-iso.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tm-newsletter-public.css', array(), $this->version, 'all' );
 
 	}
@@ -95,7 +95,7 @@ class Tm_Newsletter_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_script( 'bootstrap4-iso', TM_NEWS_PLUGIN_URL . 'assets/bootstrap-iso/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tm-newsletter-public.js', array( 'jquery' ), $this->version, false );
 
 	}

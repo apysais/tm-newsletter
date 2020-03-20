@@ -40,6 +40,7 @@ define( 'TM_NEWS_CPT', 'news' );
 define( 'TM_NEWSLETTER_CPT', 'newsletter' );
 define( 'TM_NEWSLETTER_TAX', 'category_newsletter' );
 define( 'TM_NEWS_TAX', 'category_news' );
+define( 'TM_NEWS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 /**
  * For autoloading classes
  * */
@@ -130,41 +131,34 @@ function tnl_init() {
 	TNL_CPT_News::get_instance();
 	TNL_CPT_Newsletter::get_instance();
 	TNL_Terms_Term::get_instance()->create();
-
+	TNL_ShortCode_NewsLetterSingle::get_instance();
 	if ( !is_admin() ) {
-		test();
+		//test();
 	}
 
 }
 add_action( 'init', 'tnl_init' );
 
-function tnl_wp() {
-
-}
-add_action('wp_admin', 'tnl_wp');
 function test() {
 	$post_id = 53;
 	$args = [
 		'category' => ''
 	];
 
-	$featured = TNL_NewsLetter_Featured::get_instance()->getNewsPosts([
-			'post_id' => $post_id
-	]);
-
-	tnl_dd($featured);
-
 	$settings = new TNL_NewsLetter_Settings;
 	$settings->setPostId( $post_id );
 	tnl_dd($settings->getIssueDate());
 
-	if ( $featured ) {
-		$query = [
-			'post__in' => $featured
-		];
-		$posts = TNL_GetPosts::get_instance()->query($query);
-		tnl_dd($posts);
-	}
+	$query_args = [
+		'post_id' => $post_id
+	];
 
+	// $featured = TNL_NewsLetter_Query::get_instance()->getFeatured( $query_args );
+	// tnl_dd($featured);
+	//
+	// $standard = TNL_NewsLetter_Query::get_instance()->getStandard( $query_args );
+	// tnl_dd($standard);
+	//$whats_on = TNL_NewsLetter_Query::get_instance()->getWhatsOn( $query_args );
+	//tnl_dd($whats_on);
 	exit();
 }

@@ -53,6 +53,7 @@ class TNL_Terms_Term
       'Standard',
       'What\'s on ',
       'Did you know',
+      'Instagram',
       'Meet the community',
       'Project Updates',
     ];

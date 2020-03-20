@@ -282,8 +282,9 @@ class TNL_View{
 	 * */
 	public function public_partials($template_file, $data = array(), $require_once = false){
 		/**
-		 * path to admin template
+		 * path to public template
 		 * */
+		 
 		$template_public = $this->public_part_partials($template_file);
 		/**
 		 * extract the data so it will be variable only
