@@ -1,0 +1,25 @@
+25/03/2020
+Layout replication and replacement
+
+Newsletter archive
+
+Replacing/replicating
+https://redbank-staging.tornmarketing.com.au/living-at-redbank/community-news/
+
+Newsletter single
+Replacing mailchimp with the new MJML layout (Concept not the code)
+
+News Article
+Replicating  / NOT replacing
+https://redbank-staging.tornmarketing.com.au/living-at-redbank/community-notice/
+
+News Single
+TBA
+
+
+29-03-2020
+- add cta url on each news article, assign to the url to the feature image in the article, target _blank
+- add option to assign news article via tags for easy and fast add to newsletter - tested,done
+- add naked url to bottom on each news article
+- on videos category add class "video-popup" on featured image- add cta url on each news article,
+assign to the url to the feature image in the article, target _blank

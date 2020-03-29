@@ -41,6 +41,7 @@ define( 'TM_NEWSLETTER_CPT', 'newsletter' );
 define( 'TM_NEWSLETTER_TAX', 'category_newsletter' );
 define( 'TM_NEWS_TAX', 'category_news' );
 define( 'TM_NEWS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'TM_NEWSLETTER_ARCHIVE_LIMIT', 3 );
 /**
  * For autoloading classes
  * */
@@ -135,6 +136,6 @@ function tnl_init() {
 	TNL_CPT_News::get_instance();
 	TNL_CPT_Newsletter::get_instance();
 	TNL_Terms_Term::get_instance()->create();
-	TNL_NewsLetter_Template::get_instance()->init();
+	TNL_NewsLetter_Template::get_instance();
 }
 add_action( 'init', 'tnl_init' );

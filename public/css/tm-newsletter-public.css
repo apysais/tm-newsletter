@@ -2,3 +2,29 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+ .newsletter-single{
+   /* width: 700px; */
+ }
+ .newsletter-container {
+   margin-bottom:20px;
+ }
+.loop-list-item{
+  margin:10px;
+  border-bottom: solid 2px #F1514D;
+}
+.tnl-footer .card {
+  background-color: #808080;
+}
+.top-content-container {
+  padding:20px;
+  margin:10px;
+}
+.newsletter-archive-container {
+  margin-bottom: 50px;
+}
+.news-item{
+  margin-bottom:20px;
+}
+.news-item:nth-child(even) {
+    background-color: #F3F4F4;
+}

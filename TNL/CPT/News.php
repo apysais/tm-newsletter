@@ -106,6 +106,39 @@ class TNL_CPT_News
 
       register_taxonomy( 'category_news', array( 'news' ), $args_news_tax );
 
+			// Add new taxonomy, NOT hierarchical (like tags)
+			$labels_news_tag = array(
+				'name'                       => _x( 'News Tag', 'taxonomy general name', $text_domain ),
+				'singular_name'              => _x( 'News Tag', 'taxonomy singular name', $text_domain ),
+				'search_items'               => __( 'Search News Tag', $text_domain ),
+				'popular_items'              => __( 'Popular News Tag', $text_domain ),
+				'all_items'                  => __( 'All News Tag', $text_domain ),
+				'parent_item'                => null,
+				'parent_item_colon'          => null,
+				'edit_item'                  => __( 'Edit News Tag', $text_domain ),
+				'update_item'                => __( 'Update News Tag', $text_domain ),
+				'add_new_item'               => __( 'Add New News Tag', $text_domain ),
+				'new_item_name'              => __( 'New News Tag Name', $text_domain ),
+				'separate_items_with_commas' => __( 'Separate News Tag with commas', $text_domain ),
+				'add_or_remove_items'        => __( 'Add or remove News Tag', 'textdomain' ),
+				'choose_from_most_used'      => __( 'Choose from the most used News Tag', $text_domain ),
+				'not_found'                  => __( 'No News Tag found.', $text_domain ),
+				'menu_name'                  => __( 'News Tag', $text_domain ),
+			);
+
+			$args_news_tag = array(
+				'hierarchical'          => false,
+				'show_in_rest' 					=> true,
+				'labels'                => $labels_news_tag,
+				'show_ui'               => true,
+				'show_admin_column'     => true,
+				'update_count_callback' => '_update_post_term_count',
+				'query_var'             => true,
+				'rewrite'               => array( 'slug' => 'news_tag' ),
+			);
+
+			register_taxonomy( 'news_tag', array( 'news' ), $args_news_tag );
+
     }
 
 

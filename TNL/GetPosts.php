@@ -57,13 +57,13 @@ class TNL_GetPosts
     $defaults = [
       'post_type' => 'news',
       'posts_per_page' => -1,
-      'post__in' => []
+			'tax_query' => [],
     ];
 
     $args = wp_parse_args( $args, $defaults );
 
     $query_args = $args;
-
+	
     $query = new WP_Query( $query_args );
 
     if ( $query->have_posts() ) {

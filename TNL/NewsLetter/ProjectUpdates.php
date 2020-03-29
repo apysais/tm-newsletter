@@ -62,7 +62,7 @@ class TNL_NewsLetter_ProjectUpdates
     $news_posts =  TNL_ACF_Fields::get_instance()->getFields( 'project_updates', $post_id );
 
     if ( $news_posts ) {
-      return $news_posts['news_post'];
+      return $news_posts;
     }
 
     return false;

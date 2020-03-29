@@ -53,9 +53,9 @@ class TNL_CPT_Newsletter
       $text_domain = tnl_get_text_domain();
 
       $labels = array(
-        "name" => __( "NewsLetter", $text_domain ),
-        "singular_name" => __( "NewsLetter", $text_domain ),
-        "menu_name" => __( "NewsLetter", $text_domain ),
+        "name" => __( "Newsletter", $text_domain ),
+        "singular_name" => __( "Newsletter", $text_domain ),
+        "menu_name" => __( "Newsletter", $text_domain ),
       );
 
       $args = array(
@@ -69,7 +69,7 @@ class TNL_CPT_Newsletter
         "show_in_rest" => true,
         "rest_base" => "",
         "rest_controller_class" => "WP_REST_Posts_Controller",
-        "has_archive" => false,
+        "has_archive" => true,
         "show_in_menu" => true,
         "show_in_nav_menus" => true,
         "exclude_from_search" => false,

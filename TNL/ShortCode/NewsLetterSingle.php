@@ -49,37 +49,14 @@ class TNL_ShortCode_NewsLetterSingle
   public function init( $atts ) {
 
     $atts = shortcode_atts( [
-			'post_id' => $atts['id']
+			'newsletter_id' => $atts['id']
     ], $atts, 'tm_newsletter_single' );
 
-		$newsletter = TNL_NewsLetter_Settings::get_instance()->getMetaData( $atts['post_id'] );
+		$data = TNL_NewsLetter_Single::get_instance()->get($atts);
 
-		$query_args = [
-			'post_id' => $atts['post_id']
-		];
-
-		$featured = TNL_NewsLetter_Query::get_instance()->getFeatured( $query_args );
-		$standard = TNL_NewsLetter_Query::get_instance()->getStandard( $query_args );
-		$did_you_know = TNL_NewsLetter_Query::get_instance()->getDidYouKnow( $query_args );
-		$meet_the_community = TNL_NewsLetter_Query::get_instance()->getMeetCommunity( $query_args );
-		$whats_on = TNL_NewsLetter_Query::get_instance()->getWhatsOn( $query_args );
-		$instagram = TNL_NewsLetter_Query::get_instance()->getInstagram( $query_args );
-		$project_updates = TNL_NewsLetter_Query::get_instance()->getProjectUpdates( $query_args );
-
-    $data = [
-			'post_id' => $atts['post_id'],
-			'newsletter_data' => $newsletter,
-			'featured' => $featured,
-			'standard' => $standard,
-			'did_you_know' => $did_you_know,
-			'meet_the_community' => $meet_the_community,
-			'whats_on' => $whats_on,
-			'instagram' => $instagram,
-			'project_updates' => $project_updates,
-		];
-		
+		ob_start();
     TNL_View::get_instance()->public_partials('shortcodes/newsletter/single.php', $data);
-
+		return ob_get_clean();
   }
 
 }//

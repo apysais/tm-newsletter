@@ -62,7 +62,7 @@ class TNL_NewsLetter_MeetCommunity
     $news_posts =  TNL_ACF_Fields::get_instance()->getFields( 'meet_the_community', $post_id );
 
     if ( $news_posts ) {
-      return $news_posts['news_post'];
+      return $news_posts;
     }
 
     return false;

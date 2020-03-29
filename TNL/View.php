@@ -284,7 +284,7 @@ class TNL_View{
 		/**
 		 * path to public template
 		 * */
-		 
+
 		$template_public = $this->public_part_partials($template_file);
 		/**
 		 * extract the data so it will be variable only
