@@ -79,7 +79,9 @@ class TNL_NewsLetter_MeetCommunity
 
 		$defaults = array (
       'show_title' => true,
+			'event_page' => false,
 			'thumbnail_size' => 'medium',
+			'template' => isset($args['template_column']) ? $args['template_column'] : 'column_1'
     );
 
     // Parse incoming $args into an array and merge it with $defaults

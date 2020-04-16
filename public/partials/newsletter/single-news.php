@@ -8,52 +8,70 @@ get_header();
 
 <div class="bootstrap-iso">
 
-  <div class="container">
+  <div class="wrap">
 
     <!-- Start the Loop. -->
      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+       <?php $post_id = get_the_ID(); ?>
+       <div class="one-column-template">
+         <div class="loop-title">
+             <h2 class="layout">
+               <?php the_title(); ?>
+             </h2>
+         </div>
+         <div class="single-loop-list-item single-news-post-id-<?php echo $post_id; ?>">
+           <div class="row row-eq-height ">
 
-     	<div class="post">
-       	<!-- Display the Title as a link to the Post's permalink. -->
-       	<h2>
-            <?php the_title(); ?>
-        </h2>
-        <?php
-          echo tnl_add_feature_img_video_class( get_the_ID() );
-          if ( has_post_thumbnail( get_the_ID() ) ) {
-              echo '<a href="' . tnl_featured_img( get_the_ID() ) . '" title="' . esc_attr( get_the_title() ) . '" target="_blank">';
-                echo get_the_post_thumbnail( get_the_ID(), 'large', ['class' => 'img-fluid '.tnl_add_feature_img_video_class( get_the_ID() ).'' ] );
-              echo '</a>';
-          }
-        ?>
-       	<!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
+             <div class="col-lg-4 col-md-12 col-sm-12 ">
 
-       	<small><?php the_time('F jS, Y'); ?> by <?php the_author_posts_link(); ?></small>
+               <div class="featured-image d-block d-md-none d-sm-block">
+                 <?php if ( has_post_thumbnail( $post_id ) ) : ?>
+                     <div class="loop-featured-image">
+                       <?php
+                         if ( has_post_thumbnail( $post_id ) ) {
+                             echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( get_the_title() ) . '" target="_blank">';
+                               echo get_the_post_thumbnail( $post_id, 'full', ['class'=>'img-fluid'] );
+                             echo '</a>';
+                         }
+                       ?>
+                     </div>
+                 <?php endif; ?>
+               </div>
 
-       	<!-- Display the Post's content in a div box. -->
+               <div class="loop-content">
+                 <?php the_content(); ?>
+               </div>
 
-       	<div class="entry">
-       		<?php the_content(); ?>
-       	</div>
+             </div>
 
+             <div class="col-lg-8 col-md-6 col-sm-12 d-none d-md-block">
+               <div class="featured-image">
+                 <?php if ( has_post_thumbnail( $post_id ) ) : ?>
+                     <div class="loop-featured-image">
+                       <?php
+                         if ( has_post_thumbnail( $post_id ) ) {
+                             echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( get_the_title() ) . '" target="_blank">';
+                               echo get_the_post_thumbnail( $post_id, 'large', ['class'=>'img-fluid mx-auto d-block'] );
+                             echo '</a>';
+                         }
+                       ?>
+                     </div>
+                 <?php endif; ?>
+               </div>
+             </div>
 
-       	<!-- Display a comma separated list of the Post's Categories. -->
+           </div>
 
-       	<p class="postmetadata"><?php _e( 'Posted in' ); ?> <?php the_category( ', ' ); ?></p>
-
-          <?php tnl_naked_url(get_the_ID()); ?>
-     	</div> <!-- closes the first div box -->
-
+         </div>
+       </div>
 
      	<!-- Stop The Loop (but note the "else:" - see next line). -->
 
      <?php endwhile; else : ?>
 
-
      	<!-- The very first "if" tested to see if there were any Posts to -->
      	<!-- display.  This "else" part tells what do if there weren't any. -->
      	<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-
 
      	<!-- REALLY stop The Loop. -->
      <?php endif; ?>

@@ -1,6 +1,5 @@
 <div class="bootstrap-iso">
   <div class="container newsletter-archive-container">
-    <?php $content = TNL_NewsLetter_Archive::get_instance()->build(); ?>
     <h1 class="display-1"> Newsletter </h1>
     <?php if ( isset($content['archvied_top_content']) ) : ?>
       <?php //tnl_dd($content['archvied_top_content']); ?>
@@ -24,11 +23,20 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
-                <h4><?php echo $item['title'];?></h4>
-                <h2><?php echo $tnl_post->post_title;?></h2>
+
+                <div class="newsletter-title">
+                  <h4><?php echo $item['title'];?></h4>
+                </div>
+
+                <div class="news-title">
+                  <h2><?php echo $tnl_post->post_title;?></h2>
+                </div>
+
                 <div class="content-archive-teaser">
-                  <p><?php echo $tnl_post->post_excerpt;?></p>
-                  <p><a href="<?php echo get_permalink( $item->ID );?>" class="btn btn-primary">Read the full article</a></p>
+                  <div class="news-excerpt"><p><?php echo $tnl_post->post_excerpt;?></p></div>
+                  <div class="news-permalink">
+                    <p><a href="<?php echo get_permalink( $item->ID );?>" class="btn btn-primary">Read the full article</a></p>
+                  </div>
                 </div>
 
               </div>
@@ -43,7 +51,7 @@
     <?php if ( isset($content['archives']) ) : ?>
       <?php //tnl_dd($content['archives']); ?>
       <div class="accordion" id="accordionYear">
-        <h1 class="display-1"> Archived Newsletter </h1>
+        <h1 class="display-3 archived-newsletter-title"> Archived Newsletter </h1>
         <?php foreach( $content['archives'] as $year => $content ) : ?>
           <div class="card">
               <div class="card-header" id="headingOne">

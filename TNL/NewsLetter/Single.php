@@ -59,7 +59,6 @@ class TNL_NewsLetter_Single
   		$whats_on = TNL_NewsLetter_Query::get_instance()->getWhatsOn( $query_args );
   		$instagram = TNL_NewsLetter_Query::get_instance()->getInstagram( $query_args );
   		$project_updates = TNL_NewsLetter_Query::get_instance()->getProjectUpdates( $query_args );
-
       $data = [
   			'post_id' => $args['newsletter_id'],
   			'newsletter_data' => $newsletter,
@@ -71,7 +70,7 @@ class TNL_NewsLetter_Single
   			'instagram' => $instagram,
   			'project_updates' => $project_updates,
   		];
-
+			//tnl_dd($data);
       return $data;
     }
     return false;
@@ -79,8 +78,16 @@ class TNL_NewsLetter_Single
 
   public function show($args = []) {
     $data = TNL_NewsLetter_Single::get_instance()->get($args);
+		$data['grid_container'] = isset($args['grid_container']) ? $args['grid_container'] : 'col-md-8';
 
-    TNL_View::get_instance()->public_partials('shortcodes/newsletter/single.php', $data);
+		$template = locate_template( 'tm-newsletter/single-part-newsletter.php' );
+
+		if ( !$template ) {
+			TNL_View::get_instance()->public_partials('shortcodes/newsletter/single.php', $data);
+		} else {
+			TNL_View::get_instance()->display($template, $data);
+		}
+
   }
 
 }//

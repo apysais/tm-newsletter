@@ -1,0 +1,725 @@
+[
+    {
+        "key": "group_5e8079b232410",
+        "title": "News Articles",
+        "fields": [
+            {
+                "key": "field_5e8079bc1155e",
+                "label": "Settings",
+                "name": "settings",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e8079d01155f",
+                        "label": "CTA URL",
+                        "name": "cta_url",
+                        "type": "url",
+                        "instructions": "URL assign to featured image.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5e8181aa65675",
+                        "label": "Newsletter",
+                        "name": "newsletter",
+                        "type": "post_object",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "newsletter"
+                        ],
+                        "taxonomy": "",
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "return_format": "id",
+                        "ui": 1
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "news"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5e71ce9349729",
+        "title": "News Letter",
+        "fields": [
+            {
+                "key": "field_5e71ce9b51d98",
+                "label": "Settings",
+                "name": "settings",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71cea151d99",
+                        "label": "Issue Date",
+                        "name": "issue_date",
+                        "type": "date_picker",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "d\/m\/Y",
+                        "return_format": "d\/m\/Y",
+                        "first_day": 1
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71ceb0d217a",
+                "label": "Featured",
+                "name": "featured",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e802c77f5ce4",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:featured"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86ed33d4912",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71e4fad5502",
+                "label": "Standard",
+                "name": "standard",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71e4fad5503",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "Select News post from Standard category.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:standard"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86ed6ccdbcb",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71e68c1aac6",
+                "label": "Did you know",
+                "name": "did_you_know",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71e68c1aac7",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "Select News post from Did you know category.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:did-you-know"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86ed90cdbcc",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71e6c185ff9",
+                "label": "Meet the community",
+                "name": "meet_the_community",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71e6c185ffa",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "Select News post from Meet the community category.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:meet-the-community"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86edc0cdbce",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71e51dd336c",
+                "label": "Whats On",
+                "name": "whats_on",
+                "type": "group",
+                "instructions": "Choose event posts",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71e8e795857",
+                        "label": "Start Event Date",
+                        "name": "start_event_date",
+                        "type": "date_picker",
+                        "instructions": "Select which event to get",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "Y-m-d",
+                        "return_format": "Y-m-d",
+                        "first_day": 1
+                    },
+                    {
+                        "key": "field_5e7211e9d37d7",
+                        "label": "Range",
+                        "name": "range",
+                        "type": "select",
+                        "instructions": "Range Interval of start event, default by 3 months starting of Starting Date",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "3": "Months (3)",
+                            "finish_date": "Use End Date",
+                            "custom": "Custom Months"
+                        },
+                        "default_value": [
+                            3
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5e71e94795858",
+                        "label": "End Event Date",
+                        "name": "end_event_date",
+                        "type": "date_picker",
+                        "instructions": "Select finish event date",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5e7211e9d37d7",
+                                    "operator": "==",
+                                    "value": "finish_date"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "display_format": "Y-m-d",
+                        "return_format": "Y-m-d",
+                        "first_day": 1
+                    },
+                    {
+                        "key": "field_5e72171506378",
+                        "label": "Custom Months",
+                        "name": "custom_months",
+                        "type": "number",
+                        "instructions": "Add custom date interval",
+                        "required": 0,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_5e7211e9d37d7",
+                                    "operator": "==",
+                                    "value": "custom"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": "",
+                        "max": "",
+                        "step": ""
+                    },
+                    {
+                        "key": "field_5e86eddecdbcf",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e7471cb1c284",
+                "label": "Instagram",
+                "name": "instagram",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e7471cb1c285",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "Select News post from Instagram category.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:instagram"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86edfacdbd0",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_5e71e72b254a8",
+                "label": "Project Updates",
+                "name": "project_updates",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_5e71e72b254a9",
+                        "label": "News Post",
+                        "name": "news_post",
+                        "type": "relationship",
+                        "instructions": "Select News post from Project updates category.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "news"
+                        ],
+                        "taxonomy": [
+                            "category_news:project-updates"
+                        ],
+                        "filters": [
+                            "search"
+                        ],
+                        "elements": [
+                            "featured_image"
+                        ],
+                        "min": "",
+                        "max": "",
+                        "return_format": "id"
+                    },
+                    {
+                        "key": "field_5e86ee0bcdbd1",
+                        "label": "Select Template",
+                        "name": "select_template",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "column_1": "One Column",
+                            "column_2": "Two Column",
+                            "column_1_2": "One and Two Column"
+                        },
+                        "default_value": [
+                            "column_1"
+                        ],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "return_format": "value",
+                        "ajax": 0,
+                        "placeholder": ""
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "newsletter"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]

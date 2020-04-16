@@ -1,3 +1,7 @@
+User: Dev-TM
+Email: dev@tornmarketing.com.au
+Password: Dev-TM!20200217
+
 https://developer.wordpress.org/reference/hooks/type_template/
 https://squareonemedia.co.uk/community/tutorials/load-custom-post-type-template-plugin-wordpress/
 
@@ -25,3 +29,12 @@ https://redbank-staging.tornmarketing.com.au/living-at-redbank/community-notice/
 
 News Single
 TBA
+
+06/04/2020
+- Header image -> full width with a text overlay with newsletter title and issue date - done
+- Covert the naked hyperlink to a read more button - done
+- Change the red bottom border to be a top border - done
+- Update the article header to be red -done
+- With the 1 column, we update this as per the XD mockup done by Osvaldo,
+also make sure that the 1 column on mobile follows the same layout as the 2 column so title / feature image / copy / button -done
+- equal heights for 2 columns

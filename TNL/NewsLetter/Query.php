@@ -72,7 +72,6 @@ class TNL_NewsLetter_Query
   public function getFeatured( $args = [] ) {
 		$post_id = false;
 		$data = false;
-
 		if ( isset( $args['post_id'] ) ) {
 			$post_id = $args['post_id'];
 		}
@@ -81,28 +80,18 @@ class TNL_NewsLetter_Query
 			$get_posts = TNL_NewsLetter_Featured::get_instance()->getNewsPosts([
 					'post_id' => $post_id
 			]);
-
-			if ( $get_posts ) {
-
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -130,26 +119,19 @@ class TNL_NewsLetter_Query
 					'post_id' => $post_id
 			]);
 
-			if ( $get_posts ) {
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -176,26 +158,19 @@ class TNL_NewsLetter_Query
 					'post_id' => $post_id
 			]);
 
-			if ( $get_posts ) {
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -222,26 +197,19 @@ class TNL_NewsLetter_Query
 					'post_id' => $post_id
 			]);
 
-			if ( $get_posts ) {
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -268,26 +236,19 @@ class TNL_NewsLetter_Query
 					'post_id' => $post_id
 			]);
 
-			if ( $get_posts ) {
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -314,26 +275,19 @@ class TNL_NewsLetter_Query
 					'post_id' => $post_id
 			]);
 
-			if ( $get_posts ) {
-				if ( $get_posts['search_by'] == 'post' ) {
-					$query = [
-						'post__in' => $get_posts['news_post']
-					];
-				} elseif ( $get_posts['search_by'] == 'tag' ) {
-					$query = [
-						'tax_query' => [
-							[
-								'taxonomy' => 'news_tag',
-								'field' 	=> 'term_id',
-		            'terms'   => $get_posts['news_tag'],
-							],
-						]
-					];
-				}
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
 
 				$posts = TNL_GetPosts::get_instance()->query($query);
 
-				$data = $posts;
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
 			}
 		}
 
@@ -362,7 +316,14 @@ class TNL_NewsLetter_Query
 
 			if ( $get_fields && isset( $get_fields['start_event_date'] ) && $get_fields['start_event_date'] !=='' ) {
 				$events = TNL_Tribe_Events::get_instance()->query( $get_fields );
-				$data = $events;
+
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_fields);
+
+				$data = [
+					'posts' => $events,
+					'template' => $select_template,
+				];
+
 			}
 		}
 

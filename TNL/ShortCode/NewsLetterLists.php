@@ -55,7 +55,7 @@ class TNL_ShortCode_NewsLetterLists
     $data = [];
 
 		ob_start();
-    TNL_View::get_instance()->public_partials('newsletter/build-newsletter.php', $data);
+    TNL_NewsLetter_Archive::get_instance()->show();
 		return ob_get_clean();
   }
 

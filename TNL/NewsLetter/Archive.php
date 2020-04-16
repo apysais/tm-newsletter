@@ -224,20 +224,28 @@ class TNL_NewsLetter_Archive
     $data = $args['data'];
     $post_id = $args['post_id'];
     if ( $post_id ) {
-
-			$get_featured_posts = TNL_NewsLetter_Query::get_instance()->getFeatured([
-				'post_id' => $post_id
+			$get_posts = TNL_NewsLetter_Featured::get_instance()->getNewsPosts([
+					'post_id' => $post_id
 			]);
 
-      if ( $get_featured_posts ) {
-        $data = $get_featured_posts[0];
+      if ( $get_posts && !empty($get_posts['news_post']) ) {
+				$arr_post_id = [];
+				if ( isset($get_posts['news_post'][0]) ) {
+					$arr_post_id = $get_posts['news_post'][0];
+				}
+				$posts = TNL_GetPosts::get_instance()->query(['post__in' => [ $arr_post_id ] ]);
+        $data = $posts[0];
       } else {
-        $standard = $get_posts = TNL_NewsLetter_Query::get_instance()->getStandard([
+        $standard = $get_posts = TNL_NewsLetter_Standard::get_instance()->getNewsPosts([
   					'post_id' => $post_id
   			]);
-				if ( $standard ) {
-					$data = $standard[0];
+
+				$arr_post_id = [];
+				if ( isset($standard['news_post'][0]) ) {
+					$arr_post_id = $standard['news_post'][0];
 				}
+				$posts = TNL_GetPosts::get_instance()->query(['post__in' => [ $arr_post_id ] ]);
+        $data = $posts[0];
       }
       return $data;
     }
@@ -267,8 +275,33 @@ class TNL_NewsLetter_Archive
       'archvied_top_content' => $archvied_top_content,
       'archives' => $archives,
     ];
-  
+
     return $datas;
   }
+
+	/**
+	 * Show build newsletter
+	 *
+	 * @return HTML
+	 */
+	public function show($args = []) {
+		$defaults = array (
+			'content' => []
+    );
+
+    // Parse incoming $args into an array and merge it with $defaults
+    $args = wp_parse_args( $args, $defaults );
+		$content = TNL_NewsLetter_Archive::get_instance()->build();
+
+		$data['content'] = $content;
+
+		$template = locate_template( 'tm-newsletter/build-newsletter.php' );
+
+		if ( !$template ) {
+			$template = TNL_View::get_instance()->public_part_partials('newsletter/build-newsletter.php');
+		}
+
+		TNL_View::get_instance()->display($template, $data);
+	}
 
 }//

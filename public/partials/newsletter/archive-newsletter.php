@@ -8,10 +8,7 @@ get_header();
 
 <div class="tnl-archive-container">
 
-  <?php
-    $data = [];
-    TNL_View::get_instance()->public_partials('newsletter/build-newsletter.php', $data);
-  ?>
+  <?php TNL_NewsLetter_Archive::get_instance()->show(); ?>
 
 </div>
 

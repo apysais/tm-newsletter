@@ -1,3 +1,20 @@
+16/04/2020
+- frontend add news category filter - x
+- if has excerpt show it else trim content words - x
+- 2 x 2 template column no read button - x
+- newsletter archive to display top (4) content by issue date (meta)
+- newsletter archive accordion display list name by issue date (meta)
+- shortcode newsletter filtered by category
+
+- auto add category as meta fields when added on news cpt category
+-- this is base on ACF and its hard coded at the moment, dynamic is possible but well not rely on ACF
+-- however i will check if theres a way in the ACF to auto add category added in CPT
+-- changing names is not possible dynamically as it is hardcoded via ACF
+-- displaying which category in the newsletter is hardcoded so featured first, standard 2nd and so on,
+its possible but well code this, ill see if its possible with ACF
+
+- migrate data from staging to production, we need t
+
 25/03/2020
 Layout replication and replacement
 

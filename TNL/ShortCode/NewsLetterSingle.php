@@ -49,11 +49,12 @@ class TNL_ShortCode_NewsLetterSingle
   public function init( $atts ) {
 
     $atts = shortcode_atts( [
-			'newsletter_id' => $atts['id']
+			'newsletter_id' => $atts['id'],
+			'grid_container' => 'col-md-6',
     ], $atts, 'tm_newsletter_single' );
 
 		$data = TNL_NewsLetter_Single::get_instance()->get($atts);
-
+		$data['grid_container'] = $atts['grid_container'];
 		ob_start();
     TNL_View::get_instance()->public_partials('shortcodes/newsletter/single.php', $data);
 		return ob_get_clean();

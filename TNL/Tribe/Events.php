@@ -70,6 +70,9 @@ class TNL_Tribe_Events
 
 			if( function_exists('tribe_get_events')  ) {
 				  $events = tribe_get_events($args_query);
+					// $get_meta = get_post_meta(1516);
+					// tnl_dd($get_meta);
+					// tnl_dd($events);
 			}
 
     }

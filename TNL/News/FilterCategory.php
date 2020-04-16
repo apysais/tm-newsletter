@@ -3,9 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 /**
-* News Meta Fields.
+* Filter news by category.
 **/
-class TNL_News_MetaFields
+class TNL_News_FilterCategory
 {
   /**
 	 * instance of this class
@@ -44,21 +44,23 @@ class TNL_News_MetaFields
 
   }
 
-  public function settings($post_id) {
-    $settings =  TNL_ACF_Fields::get_instance()->getFields( 'settings', $post_id );
-    if ( $settings ) {
-      return $settings;
-    }
-    return false;
+  public function showDropdownFilter() {
+    $taxonomies = get_terms( array(
+        'taxonomy' => 'category_news',
+        'hide_empty' => false
+    ) );
+    if ( !empty($taxonomies) ) :
+        $output = '<form method="get" action="'.home_url().'">';
+        $output .= '<select name="category-news" onchange="this.form.submit()">';
+        $output .= '<option value="-1">Choose Category</option>';
+        foreach( $taxonomies as $category ) {
+            $output .= '<option value="'. esc_attr( $category->slug ) .'">
+                '. esc_html( $category->name ) .'</option>';
+        }
+        $output.='</select>';
+        $output.='</form>';
+        echo $output;
+    endif;
   }
-
-  public function cta($post_id) {
-    $settings =  $this->settings($post_id );
-    if ( $settings && isset($settings['cta_url']) ) {
-      return $settings['cta_url'];
-    }
-    return false;
-  }
-
 
 }//

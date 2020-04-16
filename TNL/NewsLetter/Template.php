@@ -45,10 +45,21 @@ class TNL_NewsLetter_Template
 		add_filter('archive_template', [$this, 'init'], 100, 3);
   }
 
+	public function redirectNewsCategory() {
+		$uri_category_news = isset($_GET['category-news']) ? $_GET['category-news'] : false;
+		if ( $uri_category_news ) {
+			$redirect_uri = home_url( 'category-news/' . $uri_category_news );
+			wp_redirect( $redirect_uri );
+			exit;
+		}
+
+	}
+
 	/**
 	 * Check and use template in the plugin.
 	 */
   public function init( $template, $type, $templates) {
+
 
     if ( is_singular( 'newsletter' ) ) {
 			$template = locate_template( 'tm-newsletter/single-newsletter.php' );
@@ -74,7 +85,7 @@ class TNL_NewsLetter_Template
     }
 
     if ( is_post_type_archive('newsletter') ) {
-			$template = locate_template( 'archive-newsletter.php' );
+			$template = locate_template( 'tm-newsletter/archive-newsletter.php' );
 
 			if ( !$template ) {
 				$template = TNL_View::get_instance()->public_part_partials('newsletter/archive-newsletter.php');
