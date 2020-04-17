@@ -40,6 +40,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+= 1.2.3 =
+* add community notice and community contributions
 
 = 1.2.1 =
 * newsletter archive get top 4 newsletters order by issue date

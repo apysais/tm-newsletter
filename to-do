@@ -2,8 +2,8 @@
 - frontend add news category filter - x
 - if has excerpt show it else trim content words - x
 - 2 x 2 template column no read button - x
-- newsletter archive to display top (4) content by issue date (meta)
-- newsletter archive accordion display list name by issue date (meta)
+- newsletter archive to display top (4) content by issue date (meta) - x
+- newsletter archive accordion display list name by issue date (meta) - x
 - shortcode newsletter filtered by category
 
 - auto add category as meta fields when added on news cpt category

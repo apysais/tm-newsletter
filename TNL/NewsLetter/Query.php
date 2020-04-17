@@ -45,6 +45,84 @@ class TNL_NewsLetter_Query
   }
 
 	/**
+	 * Get getCommunity Notice posts.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+  public function getCommunityNotice( $args = [] ) {
+		$post_id = false;
+		$data = false;
+
+		if ( isset( $args['post_id'] ) ) {
+			$post_id = $args['post_id'];
+		}
+
+		if ( $post_id ) {
+			$get_posts = TNL_NewsLetter_CommunityNotice::get_instance()->getNewsPosts([
+					'post_id' => $post_id
+			]);
+
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
+
+				$posts = TNL_GetPosts::get_instance()->query($query);
+
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
+			}
+		}
+
+		return $data;
+
+	}
+
+	/**
+	 * Get getCommunityContributions posts.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+  public function getCommunityContributions( $args = [] ) {
+		$post_id = false;
+		$data = false;
+
+		if ( isset( $args['post_id'] ) ) {
+			$post_id = $args['post_id'];
+		}
+
+		if ( $post_id ) {
+			$get_posts = TNL_NewsLetter_CommunityContributions::get_instance()->getNewsPosts([
+					'post_id' => $post_id
+			]);
+
+			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+				$query = [
+					'post__in' => $get_posts['news_post']
+				];
+
+				$posts = TNL_GetPosts::get_instance()->query($query);
+
+				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+				$data = [
+					'posts' => $posts,
+					'template' => $select_template,
+				];
+			}
+		}
+
+		return $data;
+
+	}
+
+	/**
 	 * Get all newsletters.
 	 * @param array $args {
 	 *		@type int $post_id the post id

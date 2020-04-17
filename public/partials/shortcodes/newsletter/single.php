@@ -44,6 +44,20 @@
         </div>
       <?php endif; ?>
 
+      <?php if ( $community_contributions ) : ?>
+        <!-- community_contributions -->
+        <div class="instagram-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Community Contributions</h1>
+            <?php
+              TNL_NewsLetter_CommunityContributions::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $community_contributions['posts'],
+                'template_column'  => $community_contributions['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
       <?php if ( $whats_on ) : ?>
         <!-- Whats On -->
         <div class="whatson-container newsletter-loop-container with-title">
@@ -95,6 +109,20 @@
                 'post_id' => $post_id,
                 'posts' => $meet_the_community['posts'],
                 'template_column'  => $meet_the_community['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ( $community_notice ) : ?>
+        <!-- community_notice -->
+        <div class="instagram-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Community Notice</h1>
+            <?php
+              TNL_NewsLetter_CommunityNotice::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $community_notice['posts'],
+                'template_column'  => $community_notice['template']
               ]);
             ?>
         </div>
