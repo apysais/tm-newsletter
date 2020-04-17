@@ -47,34 +47,52 @@ class TNL_ShortCode_NewsLists
   }
 
   public function init( $atts ) {
-
+		/**
+		 * Select template type.
+		 * whether 2 column or 1 and 2 column.
+		 * column_1 : One Column
+		 * column_1_full_width : One Column full width with full text
+		 * column_2 : Two Column
+		 * column_1_2 : One and Two Column
+		 */
     $atts = shortcode_atts( [
-
+			'category' => '',
+			'template' => 'column_1'
     ], $atts, 'tm_news_lists' );
 
     $data = [];
 
-		$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-		$args = array(
+		// $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+		$tax_query = [];
+		if ( $atts['category'] !== '' ) {
+			$tax_query = array(
+	        array(
+	            'taxonomy' => 'category_news',
+	            'field'    => 'slug',
+	            'terms'    => $atts['category'],
+	        ),
+	    );
+		}
+		
+		$query = array(
 	    'post_type' => 'news',
-	    'paged' => $paged
+	    'paged' => $paged,
+			'tax_query' => $tax_query
 		);
+
 		// The Query
-		$the_query = new WP_Query( $args );
+		$posts = TNL_GetPosts::get_instance()->query($query);
 
 		$data = [
-			'posts' => $the_query
+			'template' => $atts['template'],
+			'posts' => $posts
 		];
 
 		ob_start();
 
 		TNL_View::get_instance()->public_partials('news-lists.php', $data);
 
-		/* Restore original Post Data */
-		wp_reset_postdata();
-
 		return ob_get_clean();
-
   }
 
 }//

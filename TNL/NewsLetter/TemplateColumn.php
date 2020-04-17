@@ -47,6 +47,10 @@ class TNL_NewsLetter_TemplateColumn
 	/**
 	 * Select template type.
 	 * whether 2 column or 1 and 2 column.
+	 * column_1 : One Column
+	 * column_1_full_width : One Column full width with full text
+	 * column_2 : Two Column
+	 * column_1_2 : One and Two Column
 	 */
 	public function getType( $args = [] ) {
 		$select_template = 'column_1';
