@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <div class="tnl-archive-container">
-
+  
   <?php TNL_NewsLetter_Archive::get_instance()->show(); ?>
 
 </div>

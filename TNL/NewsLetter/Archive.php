@@ -53,6 +53,33 @@ class TNL_NewsLetter_Archive
     $args = [
       'posts_per_page' => -1,
       'post_type' => 'newsletter',
+			'meta_key' => 'settings_issue_date',
+			'orderby' =>  'meta_value_num'
+    ];
+    $the_query = new WP_Query( $args );
+
+    // The Loop
+    if ( $the_query->have_posts() ) {
+        $data = $the_query->posts;
+    } else {
+        // no posts found
+    }
+    /* Restore original Post Data */
+    wp_reset_postdata();
+
+    return $data;
+  }
+
+  /**
+   * get all newsletters v1.
+	 * 17-04-2020
+	 */
+  public function getAll_v1() {
+    $data = [];
+    // The Query
+    $args = [
+      'posts_per_page' => -1,
+      'post_type' => 'newsletter',
     ];
     $the_query = new WP_Query( $args );
     // The Loop
@@ -82,7 +109,9 @@ class TNL_NewsLetter_Archive
     $ret_datas = [];
     if ( $get_datas ) {
       foreach( $get_datas as $k => $v ) {
-        $date = date('Y', strtotime($v->post_date) );
+				$get_issue_date = get_field('settings_issue_date', $v->ID);
+        $date = substr($get_issue_date, -4);
+        // $date = date('Y', strtotime($v->post_date) );
         $ret_datas[$date][] = [
           'id' => $v->ID,
           'title' => $v->post_title,
@@ -112,8 +141,9 @@ class TNL_NewsLetter_Archive
     if ( $get_datas ) {
       for( $i = 0; $i < $limit; $i++) {
         $item_data = $get_datas[$i];
-
-        $date = date('Y', strtotime($item_data->post_date) );
+				//$get_issue_date = get_field('settings_issue_date', $item_data->ID);
+        //$date = date('Y', strtotime($get_issue_date) );
+        // $date = date('Y', strtotime($item_data->post_date) );
         $ret_datas[] = $item_data;
       }
     }
@@ -181,7 +211,7 @@ class TNL_NewsLetter_Archive
     $top_archived_year = [];
 
     $current_year = isset($key_archived_year[0]) ? $key_archived_year[0] : false;
-
+		//tnl_dd($key_archived_year);
     if ( $current_year ) {
       for( $i = 0; $i < $limit; $i++) {
         $ret_datas[] = $get_datas[$current_year][$i];
@@ -275,7 +305,9 @@ class TNL_NewsLetter_Archive
       'archvied_top_content' => $archvied_top_content,
       'archives' => $archives,
     ];
-
+		// echo 'xxx===========<br>';
+		// tnl_dd($datas);
+		//exit();
     return $datas;
   }
 
@@ -291,7 +323,7 @@ class TNL_NewsLetter_Archive
 
     // Parse incoming $args into an array and merge it with $defaults
     $args = wp_parse_args( $args, $defaults );
-		$content = TNL_NewsLetter_Archive::get_instance()->build();
+		$content = $this->build();
 
 		$data['content'] = $content;
 

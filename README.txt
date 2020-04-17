@@ -40,6 +40,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.2.1 =
+* newsletter archive get top 4 newsletters order by issue date
+
 = 1.2.0 =
 * display excerpt if there is else trim content on template columns
 * add read article button in two template column
