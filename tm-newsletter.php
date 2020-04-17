@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              tornmarketing.com.au
- * @since             1.0.2
+ * @since             1.2.0
  * @package           Tm_Newsletter
  *
  * @wordpress-plugin
  * Plugin Name:       TM NewsLetter
  * Plugin URI:        https://tornmarketing.com.au/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.2
+ * Version:           1.2.0
  * Author:            Torn Marketing
  * Author URI:        tornmarketing.com.au
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TM_NEWSLETTER_VERSION', '1.0.2' );
+define( 'TM_NEWSLETTER_VERSION', '1.2.0' );
 define( 'TM_NEWS_CPT', 'news' );
 define( 'TM_NEWSLETTER_CPT', 'newsletter' );
 define( 'TM_NEWSLETTER_TAX', 'category_newsletter' );

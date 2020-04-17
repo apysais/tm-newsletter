@@ -46,8 +46,7 @@ class TNL_News_FilterCategory
 
   public function showDropdownFilter() {
     $taxonomies = get_terms( array(
-        'taxonomy' => 'category_news',
-        'hide_empty' => false
+        'taxonomy' => 'category_news'
     ) );
     if ( !empty($taxonomies) ) :
         $output = '<form method="get" action="'.home_url().'">';

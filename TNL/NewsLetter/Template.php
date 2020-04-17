@@ -61,6 +61,13 @@ class TNL_NewsLetter_Template
   public function init( $template, $type, $templates) {
 
 
+    if ( is_tax( 'category_news' ) ) {
+			$template = locate_template( 'tm-newsletter/taxonomy-category_news.php' );
+			if ( !$template ) {
+				$template = TNL_View::get_instance()->public_part_partials('newsletter/taxonomy-category_news.php');
+			}
+    }
+
     if ( is_singular( 'newsletter' ) ) {
 			$template = locate_template( 'tm-newsletter/single-newsletter.php' );
 			if ( !$template ) {
