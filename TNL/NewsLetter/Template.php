@@ -60,7 +60,6 @@ class TNL_NewsLetter_Template
 	 */
   public function init( $template, $type, $templates) {
 
-
     if ( is_tax( 'category_news' ) ) {
 			$template = locate_template( 'tm-newsletter/taxonomy-category_news.php' );
 			if ( !$template ) {

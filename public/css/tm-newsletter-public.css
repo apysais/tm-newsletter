@@ -2,118 +2,139 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
- .newsletter-single{
-   /* width: 700px; */
+ .category-news-filter a.active {
+     color: #fff;
+     background: #F1514D;
  }
- .newsletter-container {
-   margin-bottom:20px;
+ .category-news-filter a:hover {
+     color: #fff;
+     background: #F1514D;
  }
+ #overlay {
+  z-index: 999998;
+  width:100%;
+  height:100%;
+  background:#39443C;
+  position:fixed;
+  top:50px !important; /* slight offeset to allow toggle button to work */
+  left:0;
+  display:none;
+  /* 0.4 = 40% */
+    opacity:0.7;
+    filter:alpha(opacity=70); /* For IE8 and earlier */
+}
+.newsletter-single{
+ /* width: 700px; */
+}
+.newsletter-container {
+margin-bottom:20px;
+}
 .bootstrap-iso .column_1 .loop-list-item {
-	border-top: solid 2px #F1514D;
+border-top: solid 2px #F1514D;
 }
 .bootstrap-iso .column_1 .index-1 {
-	border: none !important;
+border: none !important;
 }
 .bootstrap-iso .column_2 .index-1{
-  border: none !important;
+border: none !important;
 }
 .bootstrap-iso .column_1_2 .one-column-template .index-1 {
-	border: none !important;
+border: none !important;
 }
 
 .bootstrap-iso .column_2 .index-2{
-  border: none !important;
+border: none !important;
 }
 .bootstrap-iso .column_2 .loop-list-item{
-	border-top: solid 2px #F1514D;
+border-top: solid 2px #F1514D;
 }
 .bootstrap-iso .column_1_2 .loop-list-item{
-	border-top: solid 2px #F1514D;
+border-top: solid 2px #F1514D;
 }
 /* .bootstrap-iso .column_1_2 .two-column-template .index-1{
-  border: none !important;
+border: none !important;
 }
 .bootstrap-iso .column_1_2 .two-column-template .index-2{
-  border: none !important;
+border: none !important;
 } */
 .bootstrap-iso .with-title{
-	border-top: solid 2px #F1514D;
+border-top: solid 2px #F1514D;
 }
 
 .loop-list-item{
-  /* margin:10px; */
-  padding: 10px;
-  padding-top: 28px;
-  padding-right: 25px;
-  padding-bottom: 12px;
-  padding-left: 25px;
+/* margin:10px; */
+padding: 10px;
+padding-top: 28px;
+padding-right: 25px;
+padding-bottom: 12px;
+padding-left: 25px;
 
 }
 .two-column-template .loop-featured-image {
-  height:250px;
+height:250px;
 }
 .one-column-template .loop-featured-image {
 
 }
 .two-column-template .loop-featured-image {
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+width: 100%;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .newsletter-loop-container {
 
 }
 .tnl-footer .card {
-  background-color: #808080;
+background-color: #808080;
 }
 .top-content-container {
-  padding:20px;
-  margin:10px;
+padding:20px;
+margin:10px;
 }
 .newsletter-archive-container {
-  margin-bottom: 50px;
+margin-bottom: 50px;
 }
 .news-item{
-  margin-bottom:20px;
+margin-bottom:20px;
 }
 .news-item:nth-child(even) {
-    background-color: #F3F4F4;
+  background-color: #F3F4F4;
 }
 .loop-content img {
-  margin-left: auto!important;
-  margin-right: auto!important;
+margin-left: auto!important;
+margin-right: auto!important;
 }
 
 .loop-list-item .loop-content p{
-  font-weight: 50;
-  line-height: 24px;
-  text-align: left;
+font-weight: 50;
+line-height: 24px;
+text-align: left;
 }
 
 .loop-list-item .loop-title h2{
 }
 .loop-list-item .loop-title a{
-  color:#000000;
-  text-decoration: none;
+color:#000000;
+text-decoration: none;
 }
 /*
- * Row with equal height columns
- * --------------------------------------------------
- */
+* Row with equal height columns
+* --------------------------------------------------
+*/
 .row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display:         flex;
+flex-wrap: wrap;
 }
 /* .row.display-flex {
-  display: flex;
-  flex-wrap: wrap;
+display: flex;
+flex-wrap: wrap;
 } */
 .row-eq-height > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }

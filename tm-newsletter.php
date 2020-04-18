@@ -127,7 +127,7 @@ function run_tm_newsletter() {
 	TNL_ShortCode_NewsLists::get_instance();
 	TNL_ShortCode_NewsLetterSingle::get_instance();
 	//TNL_NewsLetter_MetaBox::get_instance();
-
+	TNL_AjaxCategory::get_instance();
 }
 //run_tm_newsletter();
 add_action('plugins_loaded', 'run_tm_newsletter');

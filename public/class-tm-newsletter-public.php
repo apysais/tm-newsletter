@@ -97,7 +97,11 @@ class Tm_Newsletter_Public {
 		 */
 		wp_enqueue_script( 'bootstrap4-iso', TM_NEWS_PLUGIN_URL . 'assets/bootstrap-iso/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tm-newsletter-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_localize_script(
+			$this->plugin_name,
+			'tnl',
+    	array( 'ajax_url' => admin_url( 'admin-ajax.php' ) )
+		);
 	}
 
 }

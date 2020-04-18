@@ -40,15 +40,36 @@ class TNL_News_FilterCategory
 		return self::$instance;
 	}
 
-  public function __construct() {
+  public function __construct() {}
 
-  }
+	public function showNav() {
+		$taxonomies = get_terms([
+			'taxonomy' => 'category_news'
+		]);
+
+    if ( !empty($taxonomies) ) {
+        $output = '<ul class="nav">';
+				$output .= '<li class="nav-item category-news-nav">';
+					$output .= '<a href="#" class="nav-link get-news-category all-category active" data-cat-id="0" data-cat-slug="-1">All</a>';
+				$output .= '</li>';
+        foreach( $taxonomies as $category ) {
+            $output .= '<li class="nav-item category-news-nav">';
+							$output .= '<a href="#" class="nav-link get-news-category" data-cat-id="'.$category->term_id.'" data-cat-slug="'. esc_attr( $category->slug ) .'">';
+								$output .= esc_html( $category->name );
+							$output .= '</a>';
+						$output .= '</li>';
+        }
+        $output.='</ul>';
+        echo $output;
+    }
+	}
 
   public function showDropdownFilter() {
-    $taxonomies = get_terms( array(
-        'taxonomy' => 'category_news'
-    ) );
-    if ( !empty($taxonomies) ) :
+		$taxonomies = get_terms([
+			'taxonomy' => 'category_news'
+		]);
+
+    if ( !empty($taxonomies) ) {
         $output = '<form method="get" action="'.home_url().'">';
         $output .= '<select name="category-news" onchange="this.form.submit()">';
         $output .= '<option value="-1">Choose Category</option>';
@@ -59,7 +80,7 @@ class TNL_News_FilterCategory
         $output.='</select>';
         $output.='</form>';
         echo $output;
-    endif;
+    }
   }
 
 }//

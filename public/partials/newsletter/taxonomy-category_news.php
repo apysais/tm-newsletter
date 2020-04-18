@@ -9,7 +9,6 @@ get_header();
 <div class="bootstrap-iso">
 
   <div class="wrap">
-    <?php TNL_News_FilterCategory::get_instance()->showDropdownFilter(); ?>
     <!-- Start the Loop. -->
      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
        <?php $post_id = get_the_ID(); ?>

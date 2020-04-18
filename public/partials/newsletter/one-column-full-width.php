@@ -36,11 +36,7 @@
                 </div>
 
                 <div class="loop-content">
-                  <?php if ( ! empty( $post->post_excerpt ) ) : ?>
-                    <p><?php echo $post->post_excerpt; ?></p>
-                  <?php else: ?>
-                    <p><?php echo wp_trim_words( wpautop($post->post_content) ); ?></p>
-                  <?php endif; ?>
+                  <?php echo wpautop( $post->post_content ); ?>
                 </div>
 
                 <?php if ( $event_page ) : ?>

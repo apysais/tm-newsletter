@@ -40,6 +40,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+= 1.2.6 =
+* Add ajax on news category
+
 = 1.2.4=
 * add shortcode news articles with category and template support
 
