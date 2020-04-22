@@ -46,7 +46,6 @@ class TNL_AjaxCategory
   }
 
   public function getCategory() {
-
     if ( isset($_POST['action']) ) {
       $paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
       $cat_id   = isset($_POST['cat_id']) ? $_POST['cat_id'] : false;
@@ -68,7 +67,6 @@ class TNL_AjaxCategory
       }
 
       $query = new WP_Query( $args );
-      //tnl_dd($query);
       wp_reset_postdata();
 
       $template = locate_template( 'tm-newsletter/ajax-taxonomy-category_news.php' );

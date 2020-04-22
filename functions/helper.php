@@ -3,6 +3,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+function tnl_newsletter_archive_title() {
+	$title = tnl_verbage('newsletter_archive_title');
+	if ( $title ) {
+		echo $title;
+	}
+}
+
+function tnl_news_archive_title() {
+	$title = tnl_verbage('news_archive_title');
+	if ( $title ) {
+		echo $title;
+	}
+}
+
+function tnl_verbage( $key, $args = [] ) {
+	$defaults = array (
+		'newsletter_archive_title' => __('Our Newsletters'),
+		'news_archive_title' 	=> __('Community News'),
+	);
+
+	// Parse incoming $args into an array and merge it with $defaults
+	$args = wp_parse_args( $args, $defaults );
+
+	if ( isset($args[$key]) ) {
+		return $args[$key];
+	}
+
+	return false;
+}
+
 /**
  * wrap the array to pre tag.
  *
@@ -34,7 +64,7 @@ function tnl_cta_url($post_id) {
 	$cta = TNL_News_MetaFields::get_instance()->cta($post_id);
 	if ( $cta ) {
 		?>
-			<a href="<?php echo $cta;?>" class="xbutton"><?php echo $cta;?></a>
+			<a href="<?php echo $cta;?>" class="xbutton cta-popup"><?php echo $cta;?></a>
 		<?php
 	}
 }

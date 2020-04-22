@@ -58,7 +58,7 @@ class TNL_NewsLetter_Template
 	/**
 	 * Check and use template in the plugin.
 	 */
-  public function init( $template, $type, $templates) {
+  public function init( $template, $type, $templates ) {
 
     if ( is_tax( 'category_news' ) ) {
 			$template = locate_template( 'tm-newsletter/taxonomy-category_news.php' );
@@ -75,11 +75,16 @@ class TNL_NewsLetter_Template
     }
 
     if ( is_singular( 'news' ) ) {
-			$template = locate_template( 'tm-newsletter/single-news.php' );
+			if ( get_page_template_slug( get_the_ID() ) ) {
+				$template = locate_template( get_page_template_slug( get_the_ID() ) );
+			} else {
+				$template = locate_template( 'tm-newsletter/single-news.php' );
 
-			if ( !$template ) {
-				$template = TNL_View::get_instance()->public_part_partials('newsletter/single-news.php');
+				if ( !$template ) {
+					$template = TNL_View::get_instance()->public_part_partials('newsletter/single-news.php');
+				}
 			}
+
     }
 
     if ( is_post_type_archive('news') ) {
@@ -91,6 +96,7 @@ class TNL_NewsLetter_Template
     }
 
     if ( is_post_type_archive('newsletter') ) {
+
 			$template = locate_template( 'tm-newsletter/archive-newsletter.php' );
 
 			if ( !$template ) {

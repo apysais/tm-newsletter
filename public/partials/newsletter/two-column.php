@@ -22,8 +22,8 @@
 
             <div class="featured-image">
               <?php if ( has_post_thumbnail( $post_id ) ) : ?>
-                <a href="<?php echo tnl_featured_img( $post_id );?>'" title="<?php echo esc_attr( $post->post_title );?>" target="_blank">
-                  <div class="loop-featured-image" style="background-image:url(<?php echo get_the_post_thumbnail_url($post_id, 'large', ['class'=>'img-fluid mx-auto d-block']);?>);"></div>
+                <a href="<?php echo tnl_featured_img( $post_id );?>'" title="<?php echo esc_attr( $post->post_title );?>" target="_blank" class="cta-popup">
+                  <div class="loop-featured-image" style="background-image:url(<?php echo get_the_post_thumbnail_url($post_id, 'large', ['class'=>'img-fluid mx-auto d-block tnl-featured-image']);?>);"></div>
                 </a>
               <?php endif; ?>
             </div>

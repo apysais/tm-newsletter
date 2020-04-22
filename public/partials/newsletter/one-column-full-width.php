@@ -23,8 +23,8 @@
                   <?php if ( has_post_thumbnail( $post_id ) ) : ?>
                       <div class="loop-featured-image">
                         <?php
-                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank">';
-                              echo get_the_post_thumbnail( $post_id, 'full', ['class'=>'img-fluid mx-auto d-block'] );
+                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="cta-popup">';
+                              echo get_the_post_thumbnail( $post_id, 'full', ['class'=>'img-fluid mx-auto d-block tnl-featured-image'] );
                             echo '</a>';
                         ?>
                       </div>

@@ -108,6 +108,7 @@ register_deactivation_hook( __FILE__, 'deactivate_tm_newsletter' );
 require plugin_dir_path( __FILE__ ) . 'includes/class-tm-newsletter.php';
 
 require plugin_dir_path( __FILE__ ) . 'functions/helper.php';
+require plugin_dir_path( __FILE__ ) . 'functions/hooks.php';
 
 /**
  * Begins execution of the plugin.

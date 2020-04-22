@@ -1,6 +1,6 @@
 <div class="bootstrap-iso">
   <div class="container newsletter-archive-container">
-    <h1 class="display-1"> Newsletter </h1>
+    <h1 class="display-1"> <?php tnl_newsletter_archive_title(); ?> </h1>
     <?php if ( isset($content['archvied_top_content']) ) : ?>
       <?php //tnl_dd($content['archvied_top_content']); ?>
       <?php foreach( $content['archvied_top_content'] as $key => $item) : ?>

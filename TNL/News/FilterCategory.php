@@ -70,15 +70,14 @@ class TNL_News_FilterCategory
 		]);
 
     if ( !empty($taxonomies) ) {
-        $output = '<form method="get" action="'.home_url().'">';
-        $output .= '<select name="category-news" onchange="this.form.submit()">';
-        $output .= '<option value="-1">Choose Category</option>';
+        //$output = '<form method="get" action="'.home_url().'">';
+        $output = '<select name="category-news" class="category-news">';
+        $output .= '<option value="-1">All</option>';
         foreach( $taxonomies as $category ) {
-            $output .= '<option value="'. esc_attr( $category->slug ) .'">
-                '. esc_html( $category->name ) .'</option>';
+            $output .= '<option value="'. esc_attr( $category->slug ) .'" data-cat-id="'.$category->term_id.'">'. esc_html( $category->name ) .'</option>';
         }
         $output.='</select>';
-        $output.='</form>';
+        //$output.='</form>';
         echo $output;
     }
   }

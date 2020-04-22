@@ -9,9 +9,14 @@ get_header();
 <div class="bootstrap-iso">
 
   <div class="wrap">
-
-    <div class="category-news-filter">
+    <?php tnl_news_archive_title(); ?>
+    <div class="category-news-filter d-none d-md-block">
+      <p>Filter by category</p>
       <?php TNL_News_FilterCategory::get_instance()->showNav(); ?>
+    </div>
+    <div class="category-news-filter d-block d-md-none d-sm-block">
+      <p>Filter by category</p>
+      <?php TNL_News_FilterCategory::get_instance()->showDropdownFilter(); ?>
     </div>
 
     <div id="overlay"></div>

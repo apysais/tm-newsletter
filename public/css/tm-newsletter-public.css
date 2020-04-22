@@ -2,6 +2,9 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+ .category-news-filter a.nav-link {
+   background: #F1F1F1 0% 0% no-repeat padding-box;
+ }
  .category-news-filter a.active {
      color: #fff;
      background: #F1514D;
