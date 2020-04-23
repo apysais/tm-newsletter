@@ -75,7 +75,7 @@
       <?php if ( $instagram ) : ?>
         <!-- Whats On -->
         <div class="instagram-container newsletter-loop-container with-title">
-            <h1 class="display-5 newsletter-loop-title w-50">Instagram</h1>
+            <h1 class="display-5 newsletter-loop-title w-50">#SnappedatRedbank</h1>
             <?php
               TNL_NewsLetter_Instagram::get_instance()->showAll([
                 'post_id' => $post_id,
