@@ -4,7 +4,10 @@
         <?php setup_postdata( $post ); ?>
         <div class="one-column-template one-column-full-width-template">
           <div class="loop-list-item index-<?php echo $i; ?>">
-            <?php $post_id = $post->ID; ?>
+            <?php
+            $post_id = $post->ID;
+            $cta = tnl_cta($post_id);
+            ?>
 
             <div class="row row-eq-height ">
               <div class="col-md-12 col-sm-12 ">
@@ -23,7 +26,7 @@
                   <?php if ( has_post_thumbnail( $post_id ) ) : ?>
                       <div class="loop-featured-image">
                         <?php
-                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="cta-popup">';
+                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="'.$cta->classpopup.'">';
                               echo get_the_post_thumbnail( $post_id, 'full', ['class'=>'img-fluid mx-auto d-block tnl-featured-image'] );
                             echo '</a>';
                         ?>

@@ -53,12 +53,21 @@ class TNL_News_MetaFields
   }
 
   public function cta($post_id) {
-    $settings =  $this->settings($post_id );
+    $settings =  $this->settings($post_id);
+
     if ( $settings && isset($settings['cta_url']) ) {
       return $settings['cta_url'];
     }
     return false;
   }
 
+	public function news_link($post_id) {
+		$settings =  $this->settings($post_id);
+
+    if ( $settings && isset($settings['newsletter']) ) {
+      return $settings['newsletter'];
+    }
+    return false;
+	}
 
 }//

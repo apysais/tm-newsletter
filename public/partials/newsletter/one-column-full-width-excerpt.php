@@ -2,7 +2,7 @@
   <?php $i = 1; ?>
   <?php foreach ( $posts as $post ) : ?>
         <?php setup_postdata( $post ); ?>
-        <div class="one-column-template">
+        <div class="one-column-template one-column-full-width-template">
           <div class="loop-list-item index-<?php echo $i; ?>">
             <?php
             $post_id = $post->ID;
@@ -10,7 +10,7 @@
             ?>
 
             <div class="row row-eq-height ">
-              <div class="col-lg-6 col-md-12 col-sm-12 ">
+              <div class="col-md-12 col-sm-12 ">
                 <div class="loop-title">
                   <?php if ( $show_title ) : ?>
                     <h2>
@@ -22,29 +22,20 @@
                   <?php endif; ?>
                 </div>
 
-                <div class="featured-image d-block d-md-none d-sm-block">
+                <div class="featured-image">
                   <?php if ( has_post_thumbnail( $post_id ) ) : ?>
                       <div class="loop-featured-image">
                         <?php
-
-                          echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="'.$cta->classpopup.'">';
-                            echo get_the_post_thumbnail( $post_id, 'large', ['class'=>'img-fluid mx-auto d-block tnl-featured-image'] );
-                          echo '</a>';
+                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="'.$cta->classpopup.'">';
+                              echo get_the_post_thumbnail( $post_id, 'full', ['class'=>'img-fluid mx-auto d-block tnl-featured-image'] );
+                            echo '</a>';
                         ?>
                       </div>
                   <?php endif; ?>
                 </div>
 
                 <div class="loop-teaser">
-                  <p><?php //echo wpautop($post->post_excerpt); ?></p>
-                </div>
-
-                <div class="loop-content">
-                  <?php if ( ! empty( $post->post_excerpt ) ) : ?>
-                    <p><?php echo $post->post_excerpt; ?></p>
-                  <?php else: ?>
-                    <p><?php echo wp_trim_words( wpautop($post->post_content) ); ?></p>
-                  <?php endif; ?>
+                  <p><?php echo wpautop($post->post_excerpt); ?></p>
                 </div>
 
                 <?php if ( $event_page ) : ?>
@@ -65,19 +56,7 @@
 
                 <?php tnl_naked_url($post_id); ?>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 d-none d-md-block">
-                <div class="featured-image">
-                  <?php if ( has_post_thumbnail( $post_id ) ) : ?>
-                      <div class="loop-featured-image">
-                        <?php
-                            echo '<a href="' . tnl_featured_img( $post_id ) . '" title="' . esc_attr( $post->post_title ) . '" target="_blank" class="'.$cta->classpopup.'">';
-                              echo get_the_post_thumbnail( $post_id, 'large', ['class'=>'img-fluid mx-auto d-block tnl-featured-image'] );
-                            echo '</a>';
-                        ?>
-                      </div>
-                  <?php endif; ?>
-                </div>
-              </div>
+
             </div>
             <?php //tnl_cta_url($post_id); ?>
           </div>

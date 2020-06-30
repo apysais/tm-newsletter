@@ -90,7 +90,14 @@ get_header();
 
        	<!-- REALLY stop The Loop. -->
        <?php endif; ?>
-        <div class="post-pagination"><?php wp_pagenavi(); ?></div>
+       <?php //echo get_pagenum_link();?>
+
+        <div class="post-pagination">
+          <input type="hidden" class="paged" value="1">
+          <input type="hidden" class="cat_id" value="0">
+          <input type="hidden" class="cat_slug" value="all">
+          <?php wp_pagenavi();?>
+        </div>
     </div>
 
   </div>

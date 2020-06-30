@@ -59,7 +59,8 @@ class TNL_NewsLetter_Template
 	 * Check and use template in the plugin.
 	 */
   public function init( $template, $type, $templates ) {
-
+		global $post;
+		//tnl_dd($post->post_type);
     if ( is_tax( 'category_news' ) ) {
 			$template = locate_template( 'tm-newsletter/taxonomy-category_news.php' );
 			if ( !$template ) {

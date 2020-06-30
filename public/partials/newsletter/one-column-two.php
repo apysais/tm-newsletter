@@ -1,5 +1,5 @@
 <?php if ( $posts ) : ?>
-  <?php if ( count($posts) > 1 ) : ?>
+  <?php if ( count($posts) >= 1 ) : ?>
     <?php
       $first_post[] = $posts[0];
       $data['posts'] = $first_post;

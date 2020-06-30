@@ -1,5 +1,5 @@
 <!-- Start the Loop. -->
- <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+ <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
    <?php
     $post_id = get_the_ID();
     $post_title = get_the_title();
@@ -73,4 +73,11 @@
   <!-- REALLY stop The Loop. -->
  <?php endif; ?>
 
- <div class="post-pagination"><?php wp_pagenavi(['query' => $query]); ?></div>
+ <div class="post-pagination">
+   <input type="hidden" class="paged" value="<?php echo $paged;?>">
+   <input type="hidden" class="cat_id" value="<?php echo $cat_id;?>">
+   <input type="hidden" class="cat_slug" value="<?php echo $cat_slug;?>">
+   <?php wp_pagenavi(); ?>
+ </div>
+ <?php //print_r($query);; ?>
+ <div class="post-pagination"><?php //misha_paginator( get_pagenum_link() ); ?></div>

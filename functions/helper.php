@@ -2,7 +2,30 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+function tnl_debug_print( $var ) {
+	$arr_var = [];
+	if ( tnl_debug() ) {
+		$arr_var[] = $var;
+		tnl_dd($arr_var);
+	}
+}
+function tnl_excerpt_or_content($post_id, $content) {
+	if ( has_excerpt( $post_id ) ) {
+	    echo get_the_excerpt($post_id);
+	} else {
+	    echo wp_trim_words( wpautop($content) );
+	}
+}
+function tnl_debug() {
+	if ( isset($_GET['tnl-debug']) ) {
+		return true;
+	}
+	return false;
+}
+function tnl_newsletter_posted_on() {
+	$time_string = '<time class="entry-date published updated" datetime="'.get_the_date().'">'.get_the_date().'</time>';
+	echo $time_string;
+}
 function tnl_newsletter_archive_title() {
 	$title = tnl_verbage('newsletter_archive_title');
 	if ( $title ) {
@@ -60,6 +83,29 @@ function tnl_get_newsletter_post($post_id) {
 	return false;
 }
 
+function tnl_cta($post_id, $output = 'OBJ') {
+	$arr_cta = [
+		'url' => '',
+		'classpopup' => ''
+	];
+
+	$cta = TNL_News_MetaFields::get_instance()->cta($post_id);
+
+	if ( $cta ){
+		$arr_cta = [
+			'url' => $cta,
+			'classpopup' => 'cta-popup'
+		];
+
+		if ( $output == 'OBJ') {
+			$ret = json_decode(json_encode($arr_cta), FALSE);
+		} else {
+			$ret = $arr_cta;
+		}
+	}
+	return $ret;
+}
+
 function tnl_cta_url($post_id) {
 	$cta = TNL_News_MetaFields::get_instance()->cta($post_id);
 	if ( $cta ) {
@@ -67,6 +113,14 @@ function tnl_cta_url($post_id) {
 			<a href="<?php echo $cta;?>" class="xbutton cta-popup"><?php echo $cta;?></a>
 		<?php
 	}
+}
+
+function tnl_newsletter_link($post_id) {
+	$newsletter_link = TNL_News_MetaFields::get_instance()->news_link($post_id);
+	if ( $newsletter_link ) {
+		return get_permalink($newsletter_link);
+	}
+	return false;
 }
 
 function tnl_featured_img($post_id) {

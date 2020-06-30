@@ -47,32 +47,35 @@ class TNL_AjaxCategory
 
   public function getCategory() {
     if ( isset($_POST['action']) ) {
-      $paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
+      $paged = ( $_POST['paged'] ) ? $_POST['paged'] : 1;
       $cat_id   = isset($_POST['cat_id']) ? $_POST['cat_id'] : false;
       $cat_slug = isset($_POST['cat_slug']) ? $_POST['cat_slug'] : false;
 
       $args = array(
         'post_type' => 'news',
-        'tax_query' => array(
+				'paged' => $paged,
+      );
+			if ( $cat_slug != 'all' && $cat_id != 0 ) {
+				$args['tax_query'] = array(
             array(
                 'taxonomy' => 'category_news',
                 'field'    => 'slug',
                 'terms'    => $cat_slug,
             ),
-        ),
-      );
-
+        );
+			}
       if ( $cat_id == 0 ) {
         $args['tax_query'] = [];
       }
 
-      $query = new WP_Query( $args );
-      wp_reset_postdata();
+			query_posts($args);
+      //$query = new WP_Query( $args );
 
       $template = locate_template( 'tm-newsletter/ajax-taxonomy-category_news.php' );
 			if ( !$template ) {
 				$template = TNL_View::get_instance()->public_part_partials('newsletter/ajax-taxonomy-category_news.php');
 			}
+			wp_reset_postdata();
       require $template;
     }
 

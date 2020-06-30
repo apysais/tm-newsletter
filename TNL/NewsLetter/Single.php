@@ -74,6 +74,7 @@ class TNL_NewsLetter_Single
   			'community_contributions' => $community_contributions,
   			'community_notice' => $community_notice,
   		];
+			//tnl_debug_print($data);
 			//tnl_dd($data);
       return $data;
     }

@@ -13,6 +13,7 @@ function tnl_archives($template, $type, $templates) {
       return tnl_news_archive_title();
     });
   }
+	return $template;
 }
 
 add_filter('archive_template', 'tnl_archives', 100, 3);

@@ -74,6 +74,7 @@ class Tm_Newsletter_Public {
 		 */
 		wp_enqueue_style( 'bootstrap4-iso', TM_NEWS_PLUGIN_URL . 'assets/bootstrap-iso/bootstrap-iso.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tm-newsletter-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name . '-custom-css', plugin_dir_url( __FILE__ ) . 'css/tm-newsletter-public-custom.css', array(), $this->version, 'all' );
 
 	}
 
@@ -100,7 +101,9 @@ class Tm_Newsletter_Public {
 		wp_localize_script(
 			$this->plugin_name,
 			'tnl',
-    	array( 'ajax_url' => admin_url( 'admin-ajax.php' ) )
+    	array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+			)
 		);
 	}
 

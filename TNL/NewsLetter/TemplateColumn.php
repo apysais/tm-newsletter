@@ -49,6 +49,7 @@ class TNL_NewsLetter_TemplateColumn
 	 * whether 2 column or 1 and 2 column.
 	 * column_1 : One Column
 	 * column_1_full_width : One Column full width with full text
+	 * column_1_full_width_excerpt  : One Column full width with excerpt text
 	 * column_2 : Two Column
 	 * column_1_2 : One and Two Column
 	 */
@@ -105,12 +106,25 @@ class TNL_NewsLetter_TemplateColumn
 	  }
 	}
 
+	public function showOneColumnFullWidthExcerpt($args = []) {
+		$template = locate_template( 'tm-newsletter/one-column-full-width-excerpt.php' );
+
+	  if ( !$template ) {
+	    TNL_View::get_instance()->public_partials('newsletter/one-column-full-width-excerpt.php', $args);
+	  } else {
+			TNL_View::get_instance()->display($template, $args);
+	  }
+	}
+
 	public function showByColumns($args = []) {
 		//tnl_dd($args);
 		$template_column = isset($args['template']) ? $args['template'] : 'column_1';
 		switch($template_column) {
 			case 'column_1_full_width':
 				$this->showOneColumnFullWidth($args);
+				break;
+			case 'column_1_full_width_excerpt':
+				$this->showOneColumnFullWidthExcerpt($args);
 				break;
 			case 'column_1_2':
 				$this->showOneTwoColumn($args);

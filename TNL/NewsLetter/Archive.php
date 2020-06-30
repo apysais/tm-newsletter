@@ -47,41 +47,20 @@ class TNL_NewsLetter_Archive
   /**
    * get all newsletters.
    */
-  public function getAll() {
+  public function getAll($args = []) {
     $data = [];
     // The Query
-    $args = [
-      'posts_per_page' => -1,
+    $defaults = [
+      'posts_per_page' => isset($args['posts_per_page']) ? $args['posts_per_page'] : -1,
       'post_type' => 'newsletter',
 			'meta_key' => 'settings_issue_date',
 			'orderby' =>  'meta_value_num'
     ];
+
+		$args = wp_parse_args( $args, $defaults );
+
     $the_query = new WP_Query( $args );
 
-    // The Loop
-    if ( $the_query->have_posts() ) {
-        $data = $the_query->posts;
-    } else {
-        // no posts found
-    }
-    /* Restore original Post Data */
-    wp_reset_postdata();
-
-    return $data;
-  }
-
-  /**
-   * get all newsletters v1.
-	 * 17-04-2020
-	 */
-  public function getAll_v1() {
-    $data = [];
-    // The Query
-    $args = [
-      'posts_per_page' => -1,
-      'post_type' => 'newsletter',
-    ];
-    $the_query = new WP_Query( $args );
     // The Loop
     if ( $the_query->have_posts() ) {
         $data = $the_query->posts;
@@ -107,6 +86,7 @@ class TNL_NewsLetter_Archive
     $get_by = $args['by'];
     $get_datas = $args['data'];
     $ret_datas = [];
+
     if ( $get_datas ) {
       foreach( $get_datas as $k => $v ) {
 				$get_issue_date = get_field('settings_issue_date', $v->ID);
@@ -119,6 +99,7 @@ class TNL_NewsLetter_Archive
         ];
       }
     }
+
     return $ret_datas;
   }
 
@@ -203,36 +184,19 @@ class TNL_NewsLetter_Archive
     $args = wp_parse_args( $args, $defaults );
 
     $get_datas = $args['data'];
+
     $limit = $args['limit'];
 
     $ret_datas = [];
-
-    $key_archived_year = array_keys($get_datas);
-    $top_archived_year = [];
-
-    $current_year = isset($key_archived_year[0]) ? $key_archived_year[0] : false;
-		//tnl_dd($key_archived_year);
-    if ( $current_year ) {
-      for( $i = 0; $i < $limit; $i++) {
-        $ret_datas[] = $get_datas[$current_year][$i];
-
-        $posts = $this->getTopContent([
-          'post_id' => $get_datas[$current_year][$i]['id']
-        ]);
-
-				if ( $posts ) {
-					$ret_datas[$i]['content'] = $posts;
-				}
-        // if ( $post_id_arr && isset($post_id_arr[0])) {
-        //   $query = [
-  			// 		'post__in' => [$post_id_arr[0]]
-  			// 	];
-        //   $content = TNL_GetPosts::get_instance()->query($query);
-  			// 	$ret_datas[$i]['content'] = isset($content[0]) ? $content[0] : [];
-        // }
-      }
-    }
-		//exit();
+		for( $i = 0; $i < $limit; $i++) {
+			$posts = $this->getTopContent([
+				'post_id' => $get_datas[$i]->ID
+			]);
+			if ( $posts ) {
+				$ret_datas['content'][] = $posts;
+			}
+		}
+    
     return $ret_datas;
   }
 
@@ -297,7 +261,7 @@ class TNL_NewsLetter_Archive
       'data' => $get_all
     ]);
     $archvied_top_content = $this->getArchivedTop([
-      'data' => $archives
+      'data' => $get_all
     ]);
 
     $datas = [
@@ -305,9 +269,7 @@ class TNL_NewsLetter_Archive
       'archvied_top_content' => $archvied_top_content,
       'archives' => $archives,
     ];
-		// echo 'xxx===========<br>';
-		// tnl_dd($datas);
-		//exit();
+		//tnl_dd($datas);
     return $datas;
   }
 

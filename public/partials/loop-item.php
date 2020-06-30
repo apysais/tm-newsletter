@@ -3,6 +3,7 @@
 
     <?php
       //tnl_dd($data);
+      //tnl_debug_print($data);
       TNL_NewsLetter_TemplateColumn::get_instance()->showByColumns($data);
     ?>
 

@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              tornmarketing.com.au
- * @since             1.2.4
+ * @since             1.2.7
  * @package           Tm_Newsletter
  *
  * @wordpress-plugin
  * Plugin Name:       TM NewsLetter
  * Plugin URI:        https://tornmarketing.com.au/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.2.4
+ * Version:           1.2.7
  * Author:            Torn Marketing
  * Author URI:        tornmarketing.com.au
  * License:           GPL-2.0+
@@ -35,13 +35,13 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TM_NEWSLETTER_VERSION', '1.2.4' );
+define( 'TM_NEWSLETTER_VERSION', '1.2.7' );
 define( 'TM_NEWS_CPT', 'news' );
 define( 'TM_NEWSLETTER_CPT', 'newsletter' );
 define( 'TM_NEWSLETTER_TAX', 'category_newsletter' );
 define( 'TM_NEWS_TAX', 'category_news' );
 define( 'TM_NEWS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'TM_NEWSLETTER_ARCHIVE_LIMIT', 4 );
+define( 'TM_NEWSLETTER_ARCHIVE_LIMIT', 3 );
 /**
  * For autoloading classes
  * */
@@ -128,6 +128,8 @@ function run_tm_newsletter() {
 	TNL_ShortCode_NewsLists::get_instance();
 	TNL_ShortCode_NewsLetterSingle::get_instance();
 	//TNL_NewsLetter_MetaBox::get_instance();
+	TNL_ShortCode_NewsArchive::get_instance();
+
 	TNL_AjaxCategory::get_instance();
 }
 //run_tm_newsletter();
