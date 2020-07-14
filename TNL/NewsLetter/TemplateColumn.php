@@ -52,6 +52,7 @@ class TNL_NewsLetter_TemplateColumn
 	 * column_1_full_width_excerpt  : One Column full width with excerpt text
 	 * column_2 : Two Column
 	 * column_1_2 : One and Two Column
+	 * column_3 : Three Column Card
 	 */
 	public function getType( $args = [] ) {
 		$select_template = 'column_1';
@@ -79,6 +80,17 @@ class TNL_NewsLetter_TemplateColumn
 
 	  if ( !$template ) {
 	    TNL_View::get_instance()->public_partials('newsletter/two-column.php', $args);
+	  } else {
+			TNL_View::get_instance()->display($template, $args);
+	  }
+	}
+
+	public function showThreeColumn( $args = [] ) {
+		//two column
+	  $template = locate_template( 'tm-newsletter/three-column.php' );
+
+	  if ( !$template ) {
+	    TNL_View::get_instance()->public_partials('newsletter/three-column.php', $args);
 	  } else {
 			TNL_View::get_instance()->display($template, $args);
 	  }
@@ -125,6 +137,9 @@ class TNL_NewsLetter_TemplateColumn
 				break;
 			case 'column_1_full_width_excerpt':
 				$this->showOneColumnFullWidthExcerpt($args);
+				break;
+			case 'column_3':
+				$this->showThreeColumn($args);
 				break;
 			case 'column_1_2':
 				$this->showOneTwoColumn($args);
