@@ -5,7 +5,7 @@
     $post_title = get_the_title();
     $post_content = get_the_content();
    ?>
-   <div class="one-column-template wrap">
+   <div class="one-column-template wrap plugins">
      <div class="loop-list-item index-<?php echo $i; ?>">
        <?php //$post_id = $post->ID; ?>
 

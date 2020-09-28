@@ -54,8 +54,9 @@ class TNL_AjaxCategory
       $args = array(
         'post_type' => 'news',
 				'paged' => $paged,
+				'post_status' => ['publish']
       );
-			if ( $cat_slug != 'all' && $cat_id != 0 ) {
+			if ( $cat_slug !== '' && $cat_slug !== 'all' ) {
 				$args['tax_query'] = array(
             array(
                 'taxonomy' => 'category_news',
@@ -63,11 +64,10 @@ class TNL_AjaxCategory
                 'terms'    => $cat_slug,
             ),
         );
+			} else {
+				$args['tax_query'] = [];
 			}
-      if ( $cat_id == 0 ) {
-        $args['tax_query'] = [];
-      }
-
+			//print_r($args);
 			query_posts($args);
       //$query = new WP_Query( $args );
 

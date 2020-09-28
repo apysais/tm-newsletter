@@ -125,7 +125,7 @@ function tnl_newsletter_link($post_id) {
 
 function tnl_featured_img($post_id) {
 	$cta = TNL_News_MetaFields::get_instance()->cta($post_id);
-	if ( $cta ) {
+	if ( $cta && trim($cta) !== '' ) {
 		return $cta;
 	} else {
 		return get_permalink($post_id);

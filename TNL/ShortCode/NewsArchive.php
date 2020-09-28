@@ -92,7 +92,7 @@ class TNL_ShortCode_NewsArchive
 	      'archives' => $archives,
 			]
 		];
-
+		tnl_dd($data);
 		ob_start();
     TNL_View::get_instance()->public_partials('shortcodes/newsletter/latest-newsletter.php', $data);
 		return ob_get_clean();

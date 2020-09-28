@@ -196,7 +196,7 @@ class TNL_NewsLetter_Archive
 				$ret_datas['content'][] = $posts;
 			}
 		}
-    
+
     return $ret_datas;
   }
 
@@ -264,12 +264,16 @@ class TNL_NewsLetter_Archive
       'data' => $get_all
     ]);
 
+		if ( isset( $args['show_archive'] ) && $args['show_archive'] == 0 ) {
+			$archives = [];
+		}
+
     $datas = [
       'all' => $get_all,
       'archvied_top_content' => $archvied_top_content,
       'archives' => $archives,
     ];
-		//tnl_dd($datas);
+
     return $datas;
   }
 
@@ -285,7 +289,8 @@ class TNL_NewsLetter_Archive
 
     // Parse incoming $args into an array and merge it with $defaults
     $args = wp_parse_args( $args, $defaults );
-		$content = $this->build();
+
+		$content = $this->build($args);
 
 		$data['content'] = $content;
 

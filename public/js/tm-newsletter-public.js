@@ -201,6 +201,15 @@
 				var _news_container = $('.news-container');
 				var _over_lay = $('#overlay');
 
+				var _hash = window.location.hash.substr(1);
+				console.log(_hash);
+				if ( _hash == '' ) {
+					window.location.hash = '#';
+				} else {
+					window.location.hash = _data_cat_slug;
+				}
+
+
 				_over_lay.show();
 				remove_nav_active();
 				_this.addClass('active');
@@ -209,6 +218,7 @@
 
 			 });
 		 }
+
 		 function get_news_category_dropdown() {
 			 var _news_cat = $('.category-news');
 
@@ -248,8 +258,29 @@
 
 			 });
 		 }
+
+		 function trigger_url_news_cat() {
+			var _hash = window.location.hash.substr(1);
+
+			if ( _hash !== '' && _hash !== '' ) {
+				console.log(_hash);
+
+				var _over_lay = $('#overlay');
+
+				_over_lay.show();
+				remove_nav_active();
+				$('.category-news-filter ul li').find('.' + _hash).addClass('active');
+
+				ajax_get_cat_news( 1, 0, _hash);
+			} else {
+
+			}
+
+		 }
+
 		 get_news_category_dropdown();
 		 get_news_category();
+		 trigger_url_news_cat();
 	 });
 
 })( jQuery );

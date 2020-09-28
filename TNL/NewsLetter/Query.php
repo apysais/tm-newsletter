@@ -409,4 +409,164 @@ class TNL_NewsLetter_Query
 
 	}
 
+	/**
+	 * Get whats new posts.
+	 * added on 28-09-2020.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	 public function getWhatsNew( $args = [] ) {
+ 		$post_id = false;
+ 		$data = false;
+
+ 		if ( isset( $args['post_id'] ) ) {
+ 			$post_id = $args['post_id'];
+ 		}
+
+ 		if ( $post_id ) {
+ 			$get_posts = TNL_NewsLetter_WhatsNew::get_instance()->getNewsPosts([
+ 					'post_id' => $post_id
+ 			]);
+
+ 			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+ 				$query = [
+ 					'post__in' => $get_posts['news_post']
+ 				];
+
+ 				$posts = TNL_GetPosts::get_instance()->query($query);
+
+ 				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+ 				$data = [
+ 					'posts' => $posts,
+ 					'template' => $select_template,
+ 				];
+ 			}
+ 		}
+
+ 		return $data;
+
+ 	}
+
+	/**
+	 * Get whats new posts.
+	 * added on 28-09-2020.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	 public function getWhatsNew( $args = [] ) {
+ 		$post_id = false;
+ 		$data = false;
+
+ 		if ( isset( $args['post_id'] ) ) {
+ 			$post_id = $args['post_id'];
+ 		}
+
+ 		if ( $post_id ) {
+ 			$get_posts = TNL_NewsLetter_WhatsNew::get_instance()->getNewsPosts([
+ 					'post_id' => $post_id
+ 			]);
+
+ 			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+ 				$query = [
+ 					'post__in' => $get_posts['news_post']
+ 				];
+
+ 				$posts = TNL_GetPosts::get_instance()->query($query);
+
+ 				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+ 				$data = [
+ 					'posts' => $posts,
+ 					'template' => $select_template,
+ 				];
+ 			}
+ 		}
+
+ 		return $data;
+
+ 	}
+
+	/**
+	 * Get community events posts.
+	 * added on 28-09-2020.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	 public function getComunityEvents( $args = [] ) {
+ 		$post_id = false;
+ 		$data = false;
+
+ 		if ( isset( $args['post_id'] ) ) {
+ 			$post_id = $args['post_id'];
+ 		}
+
+ 		if ( $post_id ) {
+ 			$get_posts = TNL_NewsLetter_CommunityEvents::get_instance()->getNewsPosts([
+ 					'post_id' => $post_id
+ 			]);
+
+ 			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+ 				$query = [
+ 					'post__in' => $get_posts['news_post']
+ 				];
+
+ 				$posts = TNL_GetPosts::get_instance()->query($query);
+
+ 				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+ 				$data = [
+ 					'posts' => $posts,
+ 					'template' => $select_template,
+ 				];
+ 			}
+ 		}
+
+ 		return $data;
+
+ 	}
+
+	/**
+	 * Get lifestyle posts.
+	 * added on 28-09-2020.
+	 * @param array $args {
+	 *		@type int $post_id the post id
+ 	 * }
+	 */
+	 public function getLifestyle( $args = [] ) {
+ 		$post_id = false;
+ 		$data = false;
+
+ 		if ( isset( $args['post_id'] ) ) {
+ 			$post_id = $args['post_id'];
+ 		}
+
+ 		if ( $post_id ) {
+ 			$get_posts = TNL_NewsLetter_Lifestyle::get_instance()->getNewsPosts([
+ 					'post_id' => $post_id
+ 			]);
+
+ 			if ( $get_posts && isset($get_posts['news_post']) && !empty($get_posts['news_post']) ) {
+ 				$query = [
+ 					'post__in' => $get_posts['news_post']
+ 				];
+
+ 				$posts = TNL_GetPosts::get_instance()->query($query);
+
+ 				$select_template = TNL_NewsLetter_TemplateColumn::get_instance()->getType($get_posts);
+
+ 				$data = [
+ 					'posts' => $posts,
+ 					'template' => $select_template,
+ 				];
+ 			}
+ 		}
+
+ 		return $data;
+
+ 	}
+
 }//

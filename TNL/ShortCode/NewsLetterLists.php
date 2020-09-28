@@ -49,13 +49,34 @@ class TNL_ShortCode_NewsLetterLists
   public function init( $atts ) {
 
     $atts = shortcode_atts( [
-
+			'show_archive' => 0,
+			'archvied_top_content_limit' => 0
     ], $atts, 'tm_newsletter_lists' );
 
-    $data = [];
 
+		$ret = TNL_NewsLetter_Archive::get_instance()->build($atts);
+
+		if ( $atts['archvied_top_content_limit'] > 0 ) {
+			$count = count($ret['archvied_top_content']['content']);
+			$array_splice_index = ($count - $atts['archvied_top_content_limit']);
+			array_splice( $ret['archvied_top_content']['content'], $atts['archvied_top_content_limit'] );
+		}
+
+		$data = [
+			'content' => $ret
+		];
+
+		//tnl_dd($data);
 		ob_start();
-    TNL_NewsLetter_Archive::get_instance()->show();
+
+		$template = locate_template( 'tm-newsletter/shortcode-newsletter-list.php' );
+
+		if ( !$template ) {
+			$template = TNL_View::get_instance()->public_part_partials('newsletter/shortcode-newsletter-list.php');
+		}
+
+		TNL_View::get_instance()->display($template, $data);
+
 		return ob_get_clean();
   }
 

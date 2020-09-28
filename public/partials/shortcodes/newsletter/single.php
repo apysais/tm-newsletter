@@ -44,6 +44,62 @@
         </div>
       <?php endif; ?>
 
+      <?php if ( $commnunity_events ) : ?>
+        <!--Commnunity Events-->
+        <div class="commnunity_events-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Commnunity Events</h1>
+            <?php
+              TNL_NewsLetter_CommunityEvents::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $commnunity_events['posts'],
+                'template_column'  => $commnunity_events['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ( $whats_new ) : ?>
+        <!--Whats New-->
+        <div class="whats_new-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Whats New</h1>
+            <?php
+              TNL_NewsLetter_WhatsNew::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $whats_new['posts'],
+                'template_column'  => $whats_new['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ( $did_you_know ) : ?>
+        <!-- Did You Know -->
+        <div class="didyouknow-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Did You Know</h1>
+            <?php
+              TNL_NewsLetter_DidYouKnow::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $did_you_know['posts'],
+                'template_column'  => $did_you_know['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ( $meet_the_community ) : ?>
+        <!--Meet the community-->
+        <div class="meetthecommunity-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Meet the Community</h1>
+            <?php
+              TNL_NewsLetter_MeetCommunity::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $meet_the_community['posts'],
+                'template_column'  => $meet_the_community['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
       <?php if ( $community_contributions ) : ?>
         <!-- community_contributions -->
         <div class="instagram-container newsletter-loop-container with-title">
@@ -86,34 +142,6 @@
         </div>
       <?php endif; ?>
 
-      <?php if ( $did_you_know ) : ?>
-        <!-- Did You Know -->
-        <div class="didyouknow-container newsletter-loop-container with-title">
-            <h1 class="display-5 newsletter-loop-title w-50">Did You Know</h1>
-            <?php
-              TNL_NewsLetter_DidYouKnow::get_instance()->showAll([
-                'post_id' => $post_id,
-                'posts' => $did_you_know['posts'],
-                'template_column'  => $did_you_know['template']
-              ]);
-            ?>
-        </div>
-      <?php endif; ?>
-
-      <?php if ( $meet_the_community ) : ?>
-        <!--Meet the community-->
-        <div class="meetthecommunity-container newsletter-loop-container with-title">
-            <h1 class="display-5 newsletter-loop-title w-50">Meet the Community</h1>
-            <?php
-              TNL_NewsLetter_MeetCommunity::get_instance()->showAll([
-                'post_id' => $post_id,
-                'posts' => $meet_the_community['posts'],
-                'template_column'  => $meet_the_community['template']
-              ]);
-            ?>
-        </div>
-      <?php endif; ?>
-
       <?php if ( $community_notice ) : ?>
         <!-- community_notice -->
         <div class="instagram-container newsletter-loop-container with-title">
@@ -123,6 +151,20 @@
                 'post_id' => $post_id,
                 'posts' => $community_notice['posts'],
                 'template_column'  => $community_notice['template']
+              ]);
+            ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ( $lifestyle ) : ?>
+        <!--Life Style-->
+        <div class="lifestyle-container newsletter-loop-container with-title">
+            <h1 class="display-5 newsletter-loop-title w-50">Lifestyle</h1>
+            <?php
+              TNL_NewsLetter_Lifestyle::get_instance()->showAll([
+                'post_id' => $post_id,
+                'posts' => $lifestyle['posts'],
+                'template_column'  => $lifestyle['template']
               ]);
             ?>
         </div>

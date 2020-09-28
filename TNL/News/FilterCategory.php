@@ -44,17 +44,18 @@ class TNL_News_FilterCategory
 
 	public function showNav() {
 		$taxonomies = get_terms([
-			'taxonomy' => 'category_news'
+			'taxonomy' => 'category_news',
+			'exclude' => [28,26,27,29,15,30]
 		]);
 
     if ( !empty($taxonomies) ) {
         $output = '<ul class="nav">';
 				$output .= '<li class="nav-item category-news-nav">';
-					$output .= '<a href="#" class="nav-link get-news-category all-category active" data-cat-id="0" data-cat-slug="-1">All</a>';
+					$output .= '<a href="#" class="nav-link get-news-category all-category active" data-cat-id="0" data-cat-slug="">All</a>';
 				$output .= '</li>';
         foreach( $taxonomies as $category ) {
             $output .= '<li class="nav-item category-news-nav">';
-							$output .= '<a href="#" class="nav-link get-news-category" data-cat-id="'.$category->term_id.'" data-cat-slug="'. esc_attr( $category->slug ) .'">';
+							$output .= '<a href="#'.esc_attr( $category->slug ).'" class="nav-link get-news-category '.esc_attr( $category->slug ).'" data-cat-id="'.$category->term_id.'" data-cat-slug="'. esc_attr( $category->slug ) .'">';
 								$output .= esc_html( $category->name );
 							$output .= '</a>';
 						$output .= '</li>';
@@ -66,7 +67,8 @@ class TNL_News_FilterCategory
 
   public function showDropdownFilter() {
 		$taxonomies = get_terms([
-			'taxonomy' => 'category_news'
+			'taxonomy' => 'category_news',
+			'exclude' => [28,26,27,29,15,30]
 		]);
 
     if ( !empty($taxonomies) ) {

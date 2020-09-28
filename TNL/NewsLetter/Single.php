@@ -54,6 +54,9 @@ class TNL_NewsLetter_Single
   		];
   		$featured = TNL_NewsLetter_Query::get_instance()->getFeatured( $query_args );
   		$standard = TNL_NewsLetter_Query::get_instance()->getStandard( $query_args );
+  		$commnunity_events = TNL_NewsLetter_Query::get_instance()->getComunityEvents( $query_args );
+  		$whats_new = TNL_NewsLetter_Query::get_instance()->getWhatsNew( $query_args );
+  		$lifestyle = TNL_NewsLetter_Query::get_instance()->getLifestyle( $query_args );
   		$did_you_know = TNL_NewsLetter_Query::get_instance()->getDidYouKnow( $query_args );
   		$meet_the_community = TNL_NewsLetter_Query::get_instance()->getMeetCommunity( $query_args );
   		$whats_on = TNL_NewsLetter_Query::get_instance()->getWhatsOn( $query_args );
@@ -66,6 +69,9 @@ class TNL_NewsLetter_Single
   			'newsletter_data' => $newsletter,
   			'featured' => $featured,
   			'standard' => $standard,
+  			'commnunity_events' => $commnunity_events,
+  			'whats_new' => $whats_new,
+  			'lifestyle' => $lifestyle,
   			'did_you_know' => $did_you_know,
   			'meet_the_community' => $meet_the_community,
   			'whats_on' => $whats_on,
